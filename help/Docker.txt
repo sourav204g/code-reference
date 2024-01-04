@@ -1,0 +1,64 @@
+Cheatsheet
+https://gist.github.com/bradtraversy/c831baaad44343cc945e76c2e30927b3
+
+https://hub.docker.com/_/wordpress
+https://hub.docker.com/_/mysql
+https://hub.docker.com/_/phpmyadmin
+
+1) docker pull wordpress
+2) docker pull mysql
+3) docker run --name my-mysql -e MYSQL_ROOT_PASSWORD=password -d mysql
+4) docker run --name my-wordpress -p 8080:80 -d --link my-mysql:mysql wordpress
+
+4i) docker ps
+4ii) docker ps -a
+
+5) docker exec f64058bcbc33 mysql -uroot -ppassword -e "show databases;"
+6) docker exec f64058bcbc33 mysql -uroot -ppassword -e "CREATE DATABASE wordpress;"
+
+7) Open your web browser and visit http://localhost:8080 
+
+8) docker exec -it my-wordpress bash
+9) docker exec -it my-mysql env
+9) docker exec -it my-mysql bash
+10) mysql -u root -p
+	10i)  show databases;
+	10ii) SELECT User, Host FROM mysql.user;
+	10iii) exit
+
+11) docker cp my-wordpress:/var/www/html .
+12) docker exec my-mysql mysqldump -u root -ppassword wordpress > wordpress_dump.sql
+
+13) docker stop my-wordpress 
+14) docker stop my-mysql
+
+/* To stop all running commands */
+15) docker stop $(docker ps -q) 
+
+16) docker start my-mysql
+17) docker start my-wordpress
+
+18) docker rm my-mysql
+19) docker rm my-wordpress
+
+/* To delete all stopped containers */
+20) docker container prune
+
+/* To delete a specific image */
+21) docker rmi mysql
+22) docker rmi wordpress
+
+/* To delete all unused images */
+23) docker image prune
+
+24) docker volume rm <volume_name>
+
+25) docker volume prune
+
+
+============================================================================
+
+WordPress Docker Compose Github Reference
+
+https://github.com/nezhar/wordpress-docker-compose -- not working
+https://github.com/kassambara/wordpress-docker-compose -- working

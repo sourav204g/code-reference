@@ -1,0 +1,2830 @@
+https://github.com/jupeter/clean-code-php
+https://github.com/estebanzeus/SOLID-PHP-principles
+==========================================
+
+// REF - https://ccm.net/forum/affich-661917-pen-drive-show-empty-even-when-data-exists
+Hello, 
+
+Check if the files are not in hidden mode. 
+
+Click on "Start" -->Run --> Type cmd and press Enter. 
+
+Here I assume your pendrive drive letter as G: 
+
+Enter this command. 
+
+attrib -h -r -s /s /d g:\*.* --> Press Enter 
+
+You can copy the above command --> Right-click in the Command Prompt and 
+
+paste it. 
+
+Note : Replace the letter g with your pen drive letter. 
+
+Now check your pen drive for the files. 
+
+Good Luck
+==========================================
+
+Templates And Hints For The Perfect Email For Almost Every Situation
+https://www.fastcompany.com/3034803/templates-and-hints-for-the-perfect-email-for-almost-every-situation
+
+==========================================
+
+Disable the Gutenberg WordPress Editor
+add_filter('use_block_editor_for_post', '__return_false', 10);
+
+==========================================
+
+error_reporting = E_ALL | ~E_STRICT | ~E_NOTICE
+
+==========================================
+
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+
+==========================================
+
+Enable WordPress Debug Mode
+define( 'WP_DEBUG', false );
+define('SCRIPT_DEBUG', false);
+
+==========================================
+Changing any Date format to any format in PHP
+// REF - https://stackoverflow.com/questions/16757728/creating-new-date-time-from-string
+
+$datetime = new DateTime();
+$newDate  = $datetime->createFromFormat('d/m/Y', '18/11/2022');
+
+echo $newDate->format('Y-m-d');
+
+==========================================
+
+Change any Time format (i.e. AM / PM) to any format (i.e 24 hours format) or vice versa in PHP
+// REF - https://stackoverflow.com/questions/16955209/how-to-convert-the-time-from-am-pm-to-24-hour-format-in-php
+
+$new_time = DateTime::createFromFormat('h:i A', '01:00 PM');
+$time_24 = $new_time->format('H:i:s');  // 24hours format
+
+==========================================
+
+
+<?php 
+
+define('DEBUG', false); // true / false // REF - http://stackoverflow.com/questions/15949304/turn-off-display-error-php-ini
+
+error_reporting(E_ALL);
+ini_set('display_errors', DEBUG ? 'On' : 'Off');
+
+?>
+
+==========================================
+/* Disable Theme Editor and Plugin Editor */
+
+// REF - https://www.labnol.org/internet/wordpress-optimization-guide/3931/
+
+define( 'WP_POST_REVISIONS', false);
+define( 'AUTOSAVE_INTERVAL', 120 );
+
+define( 'DISALLOW_FILE_EDIT', true ); //disables file editor
+define( 'DISALLOW_FILE_MODS', true ); //disables both file editor and installer
+
+====================================
+exrept php
+
+<?php       
+                                             
+                                                  // REF - http://stackoverflow.com/questions/7421134/limiting-the-output-of-phps-echo-to-200-characters
+
+                                                  $desc = get_field('journal_desc');
+                                                  $length = 60; // paragraph length
+
+                                                  if(strlen($desc) <= $length) { ?>
+                                                    <p><?php echo $desc; ?></p>
+                                                  <?php }
+                                                  else { 
+                                                    $small_desc = substr($desc, 0, $length) . '..'; ?>
+                                                    <p><?php echo trim($small_desc); ?></p>
+                                                  <?php }  
+
+                                                 ?>
+
+====================================
+
+Featured Image Thumbnail [WP]
+
+{theme_name}_post_thumbnail();
+
+====================================
+Featured Image URL [WP]
+
+<?php echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?>
+
+<?php echo get_the_post_thumbnail_url($post->ID); ?>
+
+$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
+<?php echo $image[0]; ?>
+
+
+
+
+====================================
+
+Featured Image Alt [WP]
+<?php 
+
+                                                $thumbnail_id    = get_post_thumbnail_id($post->ID);
+                                                $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+
+                                                var_dump($alt);
+
+                                        ?>
+
+
+==============================
+/* Add Option SubPage [WP] */
+
+if( function_exists('acf_add_options_page') ) {
+    acf_add_options_sub_page('No Options Page');
+    acf_add_options_sub_page('Sidebar Banner Ad');
+}
+
+
+================
+
+// Option Page - Contact Settings
+// REF - https://www.advancedcustomfields.com/resources/options-page/
+
+if( function_exists('acf_add_options_page') ) {
+	
+	acf_add_options_page(array(
+		'page_title' 	=> 'Contact Settings',
+		'menu_title'	=> 'Contact Settings',
+		'menu_slug' 	=> 'contact-settings',
+		'capability'	=> 'edit_posts',
+		'redirect'		=> false
+	));
+	
+}
+
+
+==========================
+/* Social Links [WP] */
+
+// REF - https://davidwalsh.name/php-ternary-examples
+<li><a href="<?php echo get_field('sap_facebook', 'option') != null ? get_field('sap_facebook', 'option') : '#' ; ?>" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+
+===========================
+/* Remove +,-, () from phone number [PHP] */
+
+<?php 
+
+
+				$phone = get_field('sap_phone', 'option'); 
+
+				$str = array(' ', '+', '(', ')', '-');
+
+				foreach ($str as $key => $value) {
+					$phone = explode($value, $phone); 
+					$phone = implode('', $phone);
+				}
+
+				// var_dump($phone);
+
+
+				?>
+===========================
+Categories and Counts
+<?php 
+
+                                        // REF - http://brianjohnsondesign.com/display-only-top-level-parent-categories-wordpress/
+                                         $terms = get_terms('category', array(
+
+                                            'hide_empty' => false,
+
+                                        )); //Get all the terms
+
+                                        var_dump($terms);
+
+                                    ?>
+
+
+<ul class="categories-widget">
+                                        <?php foreach ($terms as $key => $term) : ?>
+                                            <li><a href="<?php echo get_category_link( $term->term_id ); ?>"><em><?php echo $term->name; ?></em><span class="bg-orange"><?php echo $term->count; ?></span></a></li>
+                                        <?php endforeach; ?>
+</ul>
+
+=====================================
+Email and Phone validation[PHP]
+
+if (!isset($error_message) && filter_var($contactemail, FILTER_VALIDATE_EMAIL) === false) {
+        $error_message = "You must specify a valid email address.";
+    }
+
+    // $phone = preg_replace('/[^0-9]/', '', $phone);
+
+if(!isset($inquiry_error_message) && strlen($contact) !== 10 ) {
+    $inquiry_error_message = "You must specify a valid (10 digit) Phone Number.";
+}
+
+if (!isset($inquiry_error_message) && filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+        $inquiry_error_message = "You must specify a valid email address.";
+}
+
+=========================
+
+// URl Match JS
+
+      if(window.location.href.indexOf("book-online&action=verify") > -1) {
+         jQuery('#inner-banner h1').text('Book Online');
+         jQuery('.breadcrumb li.active').text('Book Online');
+      }
+
+===========================
+jQuery Script
+Skicky Ad on Scroll
+
+$(function(){
+            
+                $(window).scroll(function() {
+                    var scroll = $(this).scrollTop();
+                    console.log(scroll);
+
+                     if(scroll > 200) {
+                        $('.booking-box').css({'position' : 'fixed', 'z-index' : '99', 'top' : '120px'});
+                    } else {
+                        $('.booking-box').css({'position' : 'static'});
+                    }
+
+                    if(scroll > 3980) {
+                        $('.booking-box').css({'position' : 'absolute', 'top' : '3820px'});
+                    }
+               
+                });
+
+            // console.log($('.booking-box').offset().top);
+
+});
+
+
+=========================
+Extract text from links from console
+
+jQuery('.dropdown-menu li').each(function(e) {
+
+	var name = $(this).find('a').text().toLowerCase();
+
+	name = name.replace(/(?:^|\s)\w/g, function(match) {
+        return match.toUpperCase();
+    });
+
+ console.log(name + '\n');
+
+});
+
+======================
+Equal Height
+
+var height = 0;
+
+$('.container .row .col-sm-4 .this-conts').each(function(i) {
+
+	if( height < $(this).outerHeight() ) {
+		height = $(this).outerHeight();
+	}
+
+});
+
+$('.container .row .col-sm-4 .this-conts').css('height', height);
+
+====================================
+Refresh after 5 secconds:
+window.setTimeout(function(){location.reload()},5000); 
+
+++++++++++++++++++++++++++++++++++++++
+
+After Ajax Complete jQuery
+http://api.jquery.com/ajaxcomplete/
+
+jQuery( document ).ajaxComplete(function() {
+  window.location.href = 'http://www.virginia-garagedoor.com/thank-you/';
+});
+
+
+===================================
+// Mouse Over | Mouse Leave | Jquery | Hover
+
+		var $window = $(window);
+		var windowsize = $window.width();
+
+		if( windowsize > 768) {
+			$('.dropdown-toggle').mouseenter(function() {
+				$(this).addClass('open');
+			}).mouseleave(function() {
+				$(this).removeClass('open');
+			});
+		}
+
+===================================================
+
+Custom 404 in JAVASCRIPT
+
+function UrlExists(url) {
+    var http = new XMLHttpRequest();
+    http.open('HEAD', url, false);
+    http.send();
+    if (http.status != 404) {
+        //  do something 
+	}
+    else {
+        window.location.href = 'http://alliedallcityinc.com/404.html'; }
+}
+
+UrlExists(window.location.href);
+
+===================================================
+
+/* Phone No Formating */
+var val;
+$('.quote_tel').keydown(function(){
+
+    var key = event.keyCode || event.charCode; // REF - https://stackoverflow.com/questions/9906885/detect-backspace-and-del-on-input-event
+    console.log(key);
+
+    if( key == 8 || key == 46 ) {
+      // Do nothing
+    } else {
+
+          if($(this).val().length == 3) {
+            val = $(this).val() + '-';
+            $(this).val(val);
+          }
+
+          if($(this).val().length == 7) {
+            val = $(this).val() + '-';
+            $(this).val(val);
+          }
+
+    }
+
+});
+
+
+================================
+Changing Post type slug 
+
+// REF - https://wordpress.stackexchange.com/questions/192912/change-slug-of-registered-custom-post-type-in-child-theme
+// REF - https://paulund.co.uk/flush-permalinks-custom-post-type
+// Changing Slug
+	flush_rewrite_rules();
+	$args = get_post_type_object("ouradventures");
+	$args->rewrite["slug"] = "activities";
+	register_post_type($args->name, $args);
+
+================================
+
+// Remove slug of custom taxonomy
+
+// REF - https://wordpress.stackexchange.com/questions/28168/taxonomy-why-with-front-false-does-not-work
+
+ 	// 	   'rewrite' => array( 
+	//     'slug'          => '.',
+	//     'with_front'    => false 
+	// ),
+
+================================
+
+// Title tag hook
+
+// REF - https://paulund.co.uk/wp_title-in-wordpress-4-4
+
+add_filter( 'pre_get_document_title', function( $title ){
+    
+    global $post;
+
+  	if($_SERVER['REQUEST_URI'] == '/') {
+  		$title = 'Adventura Cayman | Adventure Gear Rentals in Grand Cayman';
+  	}
+
+    return $title;
+
+}, 999, 1 );
+
+
+================================
+File Validation in Javascript
+
+if(document.querySelector('[name="upload_resume"]').files.length == 0) {
+						
+						alert('Resume File is not Selected');
+				
+				} else {
+
+						// Validate type of file		                
+		                if(['application/pdf','application/doc', 'application/docx', 'application/rtf'].indexOf(document.querySelector('[name="upload_resume"]').files[0].type) == -1) {
+
+		                	alert('Error : Only PDF, DOC, DOCX, AND RTF files are allowed');
+		                    
+		                 } else {
+
+		                 	var size = parseFloat(document.querySelector('[name="upload_resume"]').files[0].size / 1024).toFixed(2);
+
+		                 	if(size > 1024) {
+		                 		alert('File size must not exceed 1 MB.');
+		                 	} else {
+		                 		var obj=document.application_form;
+								obj.submit();
+		                 	}
+	                 	
+		                 }
+
+
+
+
+						
+				}
+
+
+===============================================
+DISABLE COMMENTS IN WORDPRESS
+
+
+// Disable support for comments and trackbacks in post types
+function df_disable_comments_post_types_support() {
+	$post_types = get_post_types();
+	foreach ($post_types as $post_type) {
+		if(post_type_supports($post_type, 'comments')) {
+			remove_post_type_support($post_type, 'comments');
+			remove_post_type_support($post_type, 'trackbacks');
+		}
+	}
+}
+add_action('admin_init', 'df_disable_comments_post_types_support');
+
+// Close comments on the front-end
+function df_disable_comments_status() {
+	return false;
+}
+add_filter('comments_open', 'df_disable_comments_status', 20, 2);
+add_filter('pings_open', 'df_disable_comments_status', 20, 2);
+
+// Hide existing comments
+function df_disable_comments_hide_existing_comments($comments) {
+	$comments = array();
+	return $comments;
+}
+add_filter('comments_array', 'df_disable_comments_hide_existing_comments', 10, 2);
+
+// Remove comments page in menu
+function df_disable_comments_admin_menu() {
+	remove_menu_page('edit-comments.php');
+}
+add_action('admin_menu', 'df_disable_comments_admin_menu');
+
+// Redirect any user trying to access comments page
+function df_disable_comments_admin_menu_redirect() {
+	global $pagenow;
+	if ($pagenow === 'edit-comments.php') {
+		wp_redirect(admin_url()); exit;
+	}
+}
+add_action('admin_init', 'df_disable_comments_admin_menu_redirect');
+
+// Remove comments metabox from dashboard
+function df_disable_comments_dashboard() {
+	remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal');
+}
+add_action('admin_init', 'df_disable_comments_dashboard');
+
+// Remove comments links from admin bar
+function df_disable_comments_admin_bar() {
+	if (is_admin_bar_showing()) {
+		remove_action('admin_bar_menu', 'wp_admin_bar_comments_menu', 60);
+	}
+}
+add_action('init', 'df_disable_comments_admin_bar');
+
+
+===================================================================
+Hide Taxonomy Term fields on the main category page
+REF - https://support.advancedcustomfields.com/forums/topic/hide-taxonomy-term-fields-on-the-main-category-page/
+
+
+// priority 20 runs after ACF built in filter
+add_filter('acf/location/rule_match/taxonomy', 'acf_location_rules_match_taxonomy', 20, 3);
+function acf_location_rules_match_taxonomy($match, $rule, $options) {
+  if ($rule['param'] == 'taxonomy' && !isset($_GET['tag_ID'])) {
+    // if the rule is for taxonomy but $_GET['tag_ID'] is not set
+    // then this is the main taxonomy page and not a term page
+    // set match to false
+    $match = false;
+  }
+  return $match;
+}
+
+==========================================
+WORDPRESS TERM ID
+$cat_ID = get_query_var('rental_gear_category');
+$term = get_term_by( 'slug', $cat_ID, 'rental_gear_category');
+
+echo '<pre>';
+var_dump($term->term_id);
+exit();
+
+==========================================
+get_field() on Custom Taxonomy
+// REF - https://support.advancedcustomfields.com/forums/topic/returning-custom-field-values-including-terms-on-term-archive-pages/
+
+<?php
+$queried_object = get_queried_object();
+$taxonomy = $queried_object->taxonomy;
+$term_id = $queried_object->term_id;
+
+$value = get_field( 'test_field', $taxonomy.'_'.$term_id);
+if( $value ) {
+    echo $value;
+} else {
+    echo 'empty';
+}
+?>
+
+
+===========================================
+// REF - https://wordpress.stackexchange.com/questions/57493/custom-taxonomy-specific-to-a-custom-post-type
+custom taxonomy for custom post type
+
+/****************************************
+ * Add custom taxonomy for Toys *
+ ****************************************/
+
+add_action('init', 'toys_categories_register');
+
+function toys_categories_register() {
+$labels = array(
+    'name'                          => 'Toys Categories',
+    'singular_name'                 => 'Toys Category',
+    'search_items'                  => 'Search Toys Categories',
+    'popular_items'                 => 'Popular Toys Categories',
+    'all_items'                     => 'All Toys Categories',
+    'parent_item'                   => 'Parent Toy Category',
+    'edit_item'                     => 'Edit Toy Category',
+    'update_item'                   => 'Update Toy Category',
+    'add_new_item'                  => 'Add New Toy Category',
+    'new_item_name'                 => 'New Toy Category',
+    'separate_items_with_commas'    => 'Separate toys categories with commas',
+    'add_or_remove_items'           => 'Add or remove toys categories',
+    'choose_from_most_used'         => 'Choose from most used toys categories'
+    );
+
+$args = array(
+    'label'                         => 'Toys Categories',
+    'labels'                        => $labels,
+    'public'                        => true,
+    'hierarchical'                  => true,
+    'show_ui'                       => true,
+    'show_in_nav_menus'             => true,
+    'args'                          => array( 'orderby' => 'term_order' ),
+    'rewrite'                       => array( 'slug' => 'toys', 'with_front' => true, 'hierarchical' => true ),
+    'query_var'                     => true
+);
+
+register_taxonomy( 'toys_categories', 'toys', $args );
+}
+
+/*****************************************
+ * Add custom post type for Toys *
+ *****************************************/
+
+add_action('init', 'toys_register');
+
+function toys_register() {
+
+    $labels = array(
+        'name' => 'Toys',
+        'singular_name' => 'Toy',
+        'add_new' => 'Add New',
+        'add_new_item' => 'Add New Toy',
+        'edit_item' => 'Edit Toy',
+        'new_item' => 'New Toy',
+        'view_item' => 'View Toy',
+        'search_items' => 'Search Toys',
+        'not_found' =>  'Nothing found',
+        'not_found_in_trash' => 'Nothing found in Trash',
+        'parent_item_colon' => ''
+    );
+
+    $args = array(
+        'labels' => $labels,
+        'public' => true,
+        'publicly_queryable' => true,
+        'show_ui' => true,
+        'query_var' => true,
+        'has_archive' => true,
+        'rewrite' => array( 'slug' => 'toys', 'with_front' => true ),
+        'capability_type' => 'post',
+        'menu_position' => 6,
+        'supports' => array('title', 'excerpt', 'editor','thumbnail') //here you can specify what type of inputs will be accessible in the admin area
+      );
+
+    register_post_type( 'toys' , $args );
+}
+
+
+==========================================
+Hide AFC Fields in root taxonomy
+
+// priority 20 runs after ACF built in filter
+add_filter('acf/location/rule_match/taxonomy', 'acf_location_rules_match_taxonomy', 20, 3);
+function acf_location_rules_match_taxonomy($match, $rule, $options) {
+  if ($rule['param'] == 'taxonomy' && !isset($_GET['tag_ID'])) {
+    // if the rule is for taxonomy but $_GET['tag_ID'] is not set
+    // then this is the main taxonomy page and not a term page
+    // set match to false
+    $match = false;
+  }
+  return $match;
+}
+
+==============================================
+// REF = https://stackoverflow.com/questions/34206455/get-image-from-taxonomy-term-using-acf
+Get image from taxonomy term using ACF
+Ask
+
+ $queried_object = get_queried_object(); 
+        $taxonomy = $queried_object->taxonomy;
+        $term_id = $queried_object->term_id;  
+
+$image = get_field('image', $taxonomy . '_' . $term_id);
+
+=============================================
+Submit form data to another page in wordpress
+
+<form method='post' action='<?php home_url('/your-page-name'); ?>' > 
+
+OR
+
+<form method='post' action='<?php get_template_directory_uri(); ?>/your-page.php' > 
+
+================================
+CSS tip: remove spinner on input of number
+Remove arrows from input type number
+
+/* For Firefox */
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+/* Webkit browsers like Safari and Chrome */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+==========================================
+// REF - https://contactform7.com/redirecting-to-another-url-after-submissions/
+Redirecting to Another URL After Submissions
+<script>
+document.addEventListener( 'wpcf7mailsent', function( event ) {
+    location = 'http://example.com/';
+}, false );
+</script>
+
+===================================
+POST TYPE & CUSTOM TAXONOMY CUSTOM POST TYPE
+
+add_action( 'init', 'jordan_tour_packages');
+function jordan_tour_packages() {
+
+	$labels = array(
+		"name" => __( 'Tour Packages', 'jordantour' ),
+		"singular_name" => __( 'Tour Package', 'jordantour' ),
+		);
+
+	$args = array(
+		"label" => __( 'Tour Packages', 'jordantour' ),
+		"labels" => $labels,
+		"description" => "",
+		"public" => true,
+		"publicly_queryable" => true,
+		"show_ui" => true,
+		"menu_icon"  => "dashicons-palmtree", // REF - http://www.wpbeginner.com/wp-tutorials/how-to-add-icons-for-custom-post-types-in-wordpress/
+		"show_in_rest" => false,
+		"rest_base" => "",
+		"has_archive" => false,
+		"show_in_menu" => true,
+				"exclude_from_search" => false,
+		"capability_type" => "post",
+		"map_meta_cap" => true,
+		"hierarchical" => false,
+		"rewrite" => array( "slug" => "tour-packages", "with_front" => true ),
+		"query_var" => true,
+		
+		"supports" => array( "title", "editor", "thumbnail"),			
+
+		);
+	
+		register_post_type( "tour_packages", $args );
+
+}
+
+add_action('init', 'tour_packages_category');
+function tour_packages_category() {
+
+		$labels = array(
+		    'name'                          => 'Tour Categories',
+		    'singular_name'                 => 'Tour Category',
+	    );
+
+		$args = array(
+		    'label'                         => 'Tour Categories',
+		    'labels'                        => $labels,
+		    'public'                        => true,
+		    'hierarchical'                  => true,
+		    'show_ui'                       => true,
+		    'show_in_nav_menus'             => true,
+		    'args'                          => array( 'orderby' => 'term_order' ),
+		    'rewrite'                       => array( 'slug' => 'tourcats', 'with_front' => true, 'hierarchical' => true ),
+		    'query_var'                     => true
+		);
+
+		register_taxonomy( 'tour_categories', 'tour_packages', $args );
+
+}
+
+===============================================
+How can I get an array/list of all current WordPress Admin Menu items?
+// REF - https://wordpress.stackexchange.com/questions/148973/how-can-i-get-an-array-list-of-all-current-wordpress-admin-menu-items
+
+// REF - https://developer.wordpress.org/reference/functions/add_menu_page/
+
+<?php
+if (!function_exists('debug_admin_menus')):
+function debug_admin_menus() {
+    global $submenu, $menu, $pagenow;
+    if ( current_user_can('manage_options') ) { // ONLY DO THIS FOR ADMIN
+        if( $pagenow == 'index.php' ) {  // PRINTS ON DASHBOARD
+            echo '<pre>'; print_r( $menu ); echo '</pre>'; // TOP LEVEL MENUS
+            echo '<pre>'; print_r( $submenu ); echo '</pre>'; // SUBMENUS
+        }
+    }
+}
+add_action( 'admin_notices', 'debug_admin_menus' );
+endif;
+
+===========================================================
+
+Remove auto generated <p> in contact form 7
+define( 'WPCF7_AUTOP', false ); // add it in config.php
+
+// OR
+
+add_filter('wpcf7_autop_or_not', '__return_false'); // add it in function.php
+
+===========================================================
+Ajax call in wordpress
+// AJAX
+// REF - https://www.youtube.com/watch?v=Cz-HImr6hQM
+// REF - https://www.youtube.com/watch?v=ipO3OrN6n2w
+
+===========================================================
+// REF - http://blog.dynamicdrive.com/5-brilliant-ways-to-lazy-load-images-for-faster-page-loads/
+Lazy Load Images after page has loaded
+<img data-src="realimage2.gif" />
+
+<script>
+window.addEventListener('load', function(){
+    var allimages= document.getElementsByTagName('img');
+    for (var i=0; i<allimages.length; i++) {
+        if (allimages[i].getAttribute('data-src')) {
+            allimages[i].setAttribute('src', allimages[i].getAttribute('data-src'));
+        }
+    }
+}, false)
+</script>
+
+===========================================================
+update Datepicker-Field ACF
+// REF - https://support.advancedcustomfields.com/forums/topic/update-datepicker-field-issue/
+
+$dob_str = '23/11/1984';
+$date = DateTime::createFromFormat('d/m/Y', $dob_str);
+$date = $date->format('Ymd');
+
+update_field('date_of_birth', $date, $post_id);
+
+===============================================================
+// REF - https://gist.github.com/danielbachhuber/8f92af4c6a8db784771c
+// Disable WP REST API requests for logged out users
+add_filter( 'rest_authentication_errors', function( $result ) {
+	if ( ! empty( $result ) ) {
+		return $result;
+	}
+	if ( ! is_user_logged_in() ) {
+		return new WP_Error( 'restx_logged_out', 'Sorry, you must be logged in to make a request.', array( 'status' => 401 ) );
+	}
+	return $result;
+});
+
+================================================
+URL parameter | Query String | Query String Parameters with JavaScript
+
+https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
+https://davidwalsh.name/query-string-javascript
+
+var urlParams = new URLSearchParams(window.location.search);
+
+console.log(urlParams.has('post')); // true
+console.log(urlParams.get('action')); // "edit"
+console.log(urlParams.getAll('action')); // ["edit"]
+console.log(urlParams.toString()); // "?post=1234&action=edit"
+console.log(urlParams.append('active', '1')); // "?post=1234&action=edit&active=1"
+
+==============================
+
+var url = document.URL;
+var hash = url.substring(url.indexOf("#") + 1);
+
+        if (hash != "") {
+            if (hash == "supplies") {
+
+                $("#give_supply").click();
+
+                $("#supplies").addClass('tab-pane fade active in');
+                $("#time").removeClass('active');
+                $("#money").removeClass('active');
+            }
+
+        }
+
+=====================================
+// in admin
+// REF - https://wordpress.stackexchange.com/questions/206839/ajax-and-nonce-when-javascript-is-in-a-seperate-file
+function wpse_206839() {
+
+    // Register our script just like we would enqueue it - for WordPress references
+    wp_register_script( 'handyman-prox', 'directory/my-special-script.js', array( 'jquery' ), false, true );
+
+    // Create any data in PHP that we may need to use in our JS file
+    $local_arr = array(
+        'ajaxurl'   => admin_url( 'admin-ajax.php' ),
+        'security'  => wp_create_nonce( 'deadpool-2' )
+    );
+
+    // Assign that data to our script as an JS object
+    $test = wp_localize_script( 'handyman-prox', 'prox', $local_arr );
+
+    // Enqueue our script
+    wp_enqueue_script( 'handyman-prox' );
+
+     var_dump($test);
+     exit();
+
+}
+add_action( 'admin_enqueue_scripts', 'wpse_206839' );
+
+==============================================================
+// jQuery.on() does not work in WordPress admin panel
+// REF - https://stackoverflow.com/questions/29991291/jquery-on-does-not-work-in-wordpress-admin-panel
+
+(function($){
+    $(".my-button").on("click", function(e){
+        e.preventDefault();
+        alert("OK");
+    });
+}(jQuery));
+
+=====================================================
+// FIX - get_field in field filter cause infinite loop
+// REF - https://support.advancedcustomfields.com/forums/topic/get_field-in-field-filter-cause-infinite-loop/
+
+add_filter('acf/load_field/key=field_55b1208a40b0e', 'form_field_55b1208a40b0e');
+function form_field_55b1208a40b0e ( $field )
+{
+  //* doesn't work
+  $repeater_min_max = get_field( 'field_55b1208a40b0e', $submission_post->ID );
+
+  //* works
+  $repeater_min_max = get_post_meta( $submission_post->ID, 'display_all_sites', true );
+ 
+  return $field;
+}
+
+
+================================================
+Wordpress Variables
+global $pagenow, $typenow, $current_screen;
+
+================================================
+Get field is not working on taxonomy
+
+// Solution -
+// REF - https://support.advancedcustomfields.com/forums/topic/get-value-from-taxonomy-term/
+
+$product_cat_object = get_queried_object();
+the_field('side_box_title', 'product_cat_' . $product_cat_object->term_id);
+
+================================================
+// Get category id from post id of a custom post type
+// REF - https://wordpress.stackexchange.com/questions/143241/get-category-id-from-post-id-of-a-custom-post-type
+
+$categories = get_the_terms($post->ID, "my-custom-taxonomy");
+
+
+================================================
+// string to Date and DateTime
+// REF - https://stackoverflow.com/questions/6238992/converting-string-to-date-and-datetime
+
+$time = strtotime('10/16/2003');
+$newformat = date('Y-m-d',$time);
+
+OR 
+$newformat =  date('F j, Y', strtotime($scheduled_date))
+================================================
+// Disallow Plugin Delete.
+// REF - https://codex.wordpress.org/Editing_wp-config.php
+define( 'DISALLOW_FILE_EDIT', true );
+define( 'DISALLOW_FILE_MODS', true );
+
+===============================================
+// Creating Filters
+// REF - https://thestizmedia.com/custom-post-type-filter-admin-custom-taxonomy/
+// REF - https://code.tutsplus.com/tutorials/wordpress-custom-post-types-taxonomies-admin-columns-filters--wp-27898
+
+/**
+ * Display a custom taxonomy dropdown in admin
+ * @author Mike Hemberger
+ * @link http://thestizmedia.com/custom-post-type-filter-admin-custom-taxonomy/
+ */
+add_action('restrict_manage_posts', 'tsm_filter_post_type_by_taxonomy');
+function tsm_filter_post_type_by_taxonomy() {
+	global $typenow;
+	$post_type = 'team'; // change to your post type
+	$taxonomy  = 'group'; // change to your taxonomy
+	if ($typenow == $post_type) {
+		$selected      = isset($_GET[$taxonomy]) ? $_GET[$taxonomy] : '';
+		$info_taxonomy = get_taxonomy($taxonomy);
+		wp_dropdown_categories(array(
+			'show_option_all' => __("Show All {$info_taxonomy->label}"),
+			'taxonomy'        => $taxonomy,
+			'name'            => $taxonomy,
+			'orderby'         => 'name',
+			'selected'        => $selected,
+			'show_count'      => true,
+			'hide_empty'      => true,
+		));
+	};
+}
+/**
+ * Filter posts by taxonomy in admin
+ * @author  Mike Hemberger
+ * @link http://thestizmedia.com/custom-post-type-filter-admin-custom-taxonomy/
+ */
+add_filter('parse_query', 'tsm_convert_id_to_term_in_query');
+function tsm_convert_id_to_term_in_query($query) {
+	global $pagenow;
+	$post_type = 'team'; // change to your post type
+	$taxonomy  = 'group'; // change to your taxonomy
+	$q_vars    = &$query->query_vars;
+	if ( $pagenow == 'edit.php' && isset($q_vars['post_type']) && $q_vars['post_type'] == $post_type && isset($q_vars[$taxonomy]) && is_numeric($q_vars[$taxonomy]) && $q_vars[$taxonomy] != 0 ) {
+		$term = get_term_by('id', $q_vars[$taxonomy], $taxonomy);
+		$q_vars[$taxonomy] = $term->slug;
+	}
+}
+
+================================================
+// REF - https://brudtkuhl.com/wordpress-filter-posts-custom-field-value-admin/
+// REF - Filter Posts By Custom Field Value In Admin
+
+/*
+Plugin Name: Admin Filter BY Custom Fields
+Plugin URI: http://en.bainternet.info
+Description: Filter posts or pages in admin by custom fields (post meta)
+Version: 1.0
+Author: Bainternet
+Author URI: http://en.bainternet.info
+*/
+add_filter( 'parse_query', 'ba_admin_posts_filter' );
+add_action( 'restrict_manage_posts', 'ba_admin_posts_filter_restrict_manage_posts' );
+function ba_admin_posts_filter( $query )
+{
+    global $pagenow;
+    if ( is_admin() && $pagenow=='edit.php' && isset($_GET['ADMIN_FILTER_FIELD_NAME']) && $_GET['ADMIN_FILTER_FIELD_NAME'] != '') {
+        $query->query_vars['meta_key'] = $_GET['ADMIN_FILTER_FIELD_NAME'];
+    if (isset($_GET['ADMIN_FILTER_FIELD_VALUE']) && $_GET['ADMIN_FILTER_FIELD_VALUE'] != '')
+        $query->query_vars['meta_value'] = $_GET['ADMIN_FILTER_FIELD_VALUE'];
+    }
+}
+function ba_admin_posts_filter_restrict_manage_posts()
+{
+    global $wpdb;
+    $sql = 'SELECT DISTINCT meta_key FROM '.$wpdb->postmeta.' ORDER BY 1';
+    $fields = $wpdb->get_results($sql, ARRAY_N);
+?>
+<select name="ADMIN_FILTER_FIELD_NAME">
+<option value=""><?php _e('Filter By Custom Fields', 'baapf'); ?></option>
+<?php
+    $current = isset($_GET['ADMIN_FILTER_FIELD_NAME'])? $_GET['ADMIN_FILTER_FIELD_NAME']:'';
+    $current_v = isset($_GET['ADMIN_FILTER_FIELD_VALUE'])? $_GET['ADMIN_FILTER_FIELD_VALUE']:'';
+    foreach ($fields as $field) {
+        if (substr($field[0],0,1) != "_"){
+        printf
+            (
+                '<option value="%s"%s>%s</option>',
+                $field[0],
+                $field[0] == $current? ' selected="selected"':'',
+                $field[0]
+            );
+        }
+    }
+?>
+</select> <?php _e('Value:', 'baapf'); ?><input type="TEXT" name="ADMIN_FILTER_FIELD_VALUE" value="<?php echo $current_v; ?>" />
+<?php
+}
+
+
+================================================
+// Get terms or selected category of a post
+// REF - https://developer.wordpress.org/reference/functions/get_the_terms/
+get_the_terms($post, 'registered_taxonomy_name');
+
+================================================
+WP_MAIL TEST
+
+$to = 'sourav.seoinfotechsolution@gmail.com';
+	$subject = 'The subject';
+	$body = 'The email body content';
+	$headers = array('Content-Type: text/html; charset=UTF-8');
+	wp_mail( $to, $subject, $body, $headers );
+
+
+	// REF - https://wordpress.stackexchange.com/questions/100047/check-to-check-if-wp-mail-is-working-properly
+	$mailResult = false;
+	$mailResult = wp_mail( 'sourav.seoinfotechsolution@gmail.com', 'test if mail works', 'hurray' );
+	echo $mailResult;
+
+
+================================================
+// REF - Copy data from one table to another in codeigniter
+// REF - https://stackoverflow.com/questions/14550021/codeigniter-active-record-insert-from-one-table-to-another
+
+$this->db->query("INSERT master_booking_table SELECT * FROM pre_transaction_table WHERE id='". $booking_id ."'");
+
+// OR
+
+$query = $this->db->get('table1');
+foreach ($query->result() as $row) {
+      $this->db->insert('table2',$row);
+}
+
+================================================
+// REF - https://kellenmace.com/remove-custom-post-type-slug-from-permalinks/
+// REF - https://stackoverflow.com/questions/39655213/wordpress-slug-without-custom-post-type-slug
+// REF - https://wordpress.stackexchange.com/questions/203951/remove-slug-from-custom-post-type-post-urls
+// Remove slug from custom post type post URLs
+
+// You must register your post type movie in init.
+
+// register_post_type('movie', $args);
+// To replace the movie from post link use the below code.
+
+function remove_my_post_type($post_link, $post, $leavename) {
+
+    if ($post->post_type != 'movie' || $post->post_status != 'publish') {
+        return $post_link;
+    }
+
+    $post_link = str_replace('/' . $post->post_type . '/', '/', $post_link);
+    return $post_link;
+}
+
+add_filter('post_type_link', 'remove_my_post_type', 10, 3);
+// After that you can set your post type shold be like a default post or page.
+
+function set_my_post($query) {
+
+    if(isset($query->query['post_type'])){
+        return;
+    }
+
+    if (!empty($query->query['name'])) {
+        $query->set('post_type', array('post', 'movie', 'page'));
+    }
+}
+
+add_action('pre_get_posts', 'set_my_post');
+
+================================================
+// What is the “hasClass” function with plain JavaScript?
+// REF - https://stackoverflow.com/questions/5085567/what-is-the-hasclass-function-with-plain-javascript
+
+Simply use classList:
+
+if (document.body.classList.contains('thatClass')) {
+    // do some stuff
+}
+Other uses of classList:
+
+document.body.classList.add('thisClass');
+// $('body').addClass('thisClass');
+
+document.body.classList.remove('thatClass');
+// $('body').removeClass('thatClass');
+
+document.body.classList.toggle('anotherClass');
+// $('body').toggleClass('anotherClass');
+
+================================================
+// REF - https://stackoverflow.com/questions/40743173/how-to-use-jquery-css-method-from-pure-js
+// How to use jQuery .css() method from pure JS?
+
+var element = document.getElementsByTagName("p"); //get all p elements
+element.style.backgroundColor = "yellow"; //change background color
+element.style.fontSize = "10px"; //change font-size
+
+================================================
+// REF - https://stackoverflow.com/questions/38469830/what-is-the-pure-javascript-equivalent-of-jquerys-parents-method
+// REF - https://stackoverflow.com/questions/47072364/how-to-get-nth-parent-element-in-pure-javascript-and-not-jquery
+
+// What is the pure JavaScript equivalent of jQuery's .parents() method
+
+document.querySelector('.handyman_sub_option_quantity').parentElement;
+// OR
+document.querySelector('.handyman_sub_option_quantity').parentNode;
+
+================================================
+// REF - https://stackoverflow.com/questions/16302045/finding-child-element-of-parent-pure-javascript
+// Finding child element of parent pure javascript
+
+parent = document.querySelector('.parent');
+children = parent.children; // [<div class="child1">]
+
+================================================
+// REF - http://usefulangle.com/post/43/jquery-find-function-in-pure-vanilla-javascript
+// Writing jQuery find() in Pure Javascript
+
+<div class="post">
+	<div class="thumb"><div>
+	<div class="thumb"><div>
+<div>
+<div class="post">
+	<div class="thumb"><div>
+	<div class="thumb"><div>
+<div>
+
+jQuery code :
+$(".post").find(".thumb");
+
+Javascript code :
+// Final found elements
+var found_elements = [];
+
+// Find all the outer matched elements
+var outers = document.querySelectorAll('.post');
+
+for(var i=0; i<outers.length; i++) {
+	var elements_in_outer = outers[i].querySelectorAll(".thumb");
+
+	// document.querySelectorAll() returns an "array-like" collection of elements
+	// convert this "array-like" collection to an array
+	elements_in_outer = Array.prototype.slice.call(elements_in_outer);
+	
+	found_elements = found_elements.concat(elements_in_outer);
+}
+
+// The final 4 elements
+console.log(found_elements);
+
+================================================
+
+// how to use JSON.stringify and json_decode() properly
+// REF - https://stackoverflow.com/questions/15986235/how-to-use-json-stringify-and-json-decode-properly
+
+JS:
+var JSONstr = JSON.stringify(fullInfoArray);
+document.getElementById('JSONfullInfoArray').value= JSONstr;
+
+PHP:
+$postedData = $_POST["JSONfullInfoArray"];
+$tempData = str_replace("\\", "",$postedData);
+$cleanData = json_decode($tempData);
+var_dump($cleanData);
+
+================================================
+
+// Activate a plugin through PHPMyAdmin
+// REF - https://wordpress.stackexchange.com/questions/199798/activate-a-plugin-through-phpmyadmin-or-ftp
+
+I fixed this by going through PHPMyAdmin to the table "Options" and then the row active_plugins.
+I had the following stored there (formatted for readability):
+
+a:10:{
+    i:0;s:49:"1and1-wordpress-wizard/1and1-wordpress-wizard.php";
+    i:1;s:29:"acf-repeater/acf-repeater.php";
+    i:2;s:30:"advanced-custom-fields/acf.php";
+    i:3;s:45:"limit-login-attempts/limit-login-attempts.php";
+    i:4;s:27:"redirection/redirection.php";
+    i:6;s:33:"w3-total-cache/w3-total-cache.php";
+    i:7;s:41:"wordpress-importer/wordpress-importer.php";
+    i:8;s:24:"wordpress-seo/wp-seo.php";
+    i:9;s:34:"wpml-string-translation/plugin.php";
+    i:10;s:38:"wpml-translation-management/plugin.php";
+}
+
+I added a new line (for the missing plugin) and incremented the a:10 to a:11 to indicate that there are now 11 items in the array:
+
+a:11:{
+    i:0;s:49:"1and1-wordpress-wizard/1and1-wordpress-wizard.php";
+    i:1;s:29:"acf-repeater/acf-repeater.php";
+    i:2;s:30:"advanced-custom-fields/acf.php";
+    i:3;s:45:"limit-login-attempts/limit-login-attempts.php";
+    i:4;s:27:"redirection/redirection.php";
+    i:5;s:40:"sitepress-multilingual-cms/sitepress.php";
+    i:6;s:33:"w3-total-cache/w3-total-cache.php";
+    i:7;s:41:"wordpress-importer/wordpress-importer.php";
+    i:8;s:24:"wordpress-seo/wp-seo.php";
+    i:9;s:34:"wpml-string-translation/plugin.php";
+    i:10;s:38:"wpml-translation-management/plugin.php";
+}
+
+i: appears to be item number, and thanks to JHoffmann's comment, it appears s: is the length of the string that follows.
+The site now works as before!
+
+================================================
+// json_encode & jquery parseJSON single quote issue
+// REF - https://stackoverflow.com/questions/17926354/php-json-encode-jquery-parsejson-single-quote-issue
+// REF - http://php.net/manual/en/function.json-encode.php
+// REF - http://php.net/manual/en/json.constants.php
+
+json_encode($var, JSON_HEX_APOS);
+
+
+================================================
+// Simple PHP Shopping Cart
+// REF - https://phppot.com/php/simple-php-shopping-cart/
+
+================================================
+// REF - https://blog.teamtreehouse.com/how-to-create-bulletproof-sessions
+// How to prevent Session preventHijacking.
+
+static protected function preventHijacking()
+{
+	if(!isset($_SESSION['IPaddress']) || !isset($_SESSION['userAgent']))
+		return false;
+
+	if ($_SESSION['IPaddress'] != $_SERVER['REMOTE_ADDR'])
+		return false;
+
+	if( $_SESSION['userAgent'] != $_SERVER['HTTP_USER_AGENT'])
+		return false;
+
+	return true;
+}
+
+================================================
+// HOW TO SET IMAGE SIZE AND DIP, RESOLUTION OF AN IMAGE IN PHP
+getimagesize() — Get the size of an image
+http://php.net/manual/en/function.getimagesize.php
+
+imageresolution() - Get or set the resolution of the image
+http://php.net/manual/en/function.imageresolution.php
+
+
+================================================
+// REF - https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
+// How to print a number with commas as thousands separators in JavaScript
+
+var number2 = 1234.56789; // floating point example
+number2.toLocaleString(undefined, {maximumFractionDigits:2})
+
+================================================
+// REF - https://wordpress.stackexchange.com/questions/143241/get-category-id-from-post-id-of-a-custom-post-type
+Get category id from post id of a custom post type
+$category = get_the_terms( $post->ID, 'custom-taxonomy-here' );     
+foreach ( $category as $cat){
+   echo $cat->name;
+}
+
+================================================
+// REF - https://stackoverflow.com/questions/21479100/bootstrap-datepicker-re-initialize-date-format
+// How to re-initiate datepicker.
+// Used Library for - https://bootstrap-datepicker.readthedocs.io/en/stable/options.html#clearbtn
+
+$(".selector").datepicker('remove'); //detach
+$(".selector").datepicker({          //re attach
+            format: "mm/dd/yyyy"
+});
+================================================
+// REF - https://stackoverflow.com/questions/281264/remove-empty-elements-from-an-array-in-javascript
+// Filter/ Remove empty elements from an array in Javascript
+
+var array = [0, 1, null, 2, "", 3, undefined, 3,,,,,, 4,, 4,, 5,, 6,,,,];
+
+var filtered = array.filter(function (el) {
+  return el != null;
+});
+
+console.log(filtered);
+
+
+================================================
+// Get product tags - wordpress
+// REF - https://stackoverflow.com/questions/31904758/woocommerce-get-product-tags-in-array
+// REF - https://developer.wordpress.org/reference/functions/get_terms/
+
+$terms = get_terms( 'product_tag' );
+$term_array = array();
+if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
+    foreach ( $terms as $term ) {
+        $term_array[] = $term->name;
+    }
+}
+
+================================================
+// REF - https://stackoverflow.com/questions/36679649/how-to-add-a-color-overlay-to-a-background-image
+// Color overlay to a background image
+
+.class {
+   background: linear-gradient(0deg,rgba(255,0,150,0.3),rgba(255,0,150,0.3)), url(http://example.com/image.png);
+}
+
+
+================================================
+// REF - https://css-tricks.com/snippets/wordpress/custom-loop-based-on-custom-fields/
+// Custom Loop/Query Based on Custom Fields
+================================================
+
+// REF - get categories by post id of custom post type
+// REF - https://wordpress.stackexchange.com/questions/143241/get-category-id-from-post-id-of-a-custom-post-type
+
+$category = get_the_terms( $post->ID, 'custom-taxonomy-here' );     
+foreach ( $category as $cat){
+   echo $cat->name;
+}
+
+================================================
+// REF - https://wordpress.stackexchange.com/questions/143241/get-category-id-from-post-id-of-a-custom-post-type
+// Get category id from post id of a custom post type
+
+$category = get_the_terms( $post->ID, 'custom-taxonomy-here' );     
+foreach ( $category as $cat){
+   echo $cat->name;
+}
+
+================================================
+// Setting “checked” for a checkbox with jQuery?
+// REF - https://stackoverflow.com/questions/426258/setting-checked-for-a-checkbox-with-jquery
+
+$('.myCheckbox').prop('checked', true);
+$('.myCheckbox').prop('checked', false);
+
+$('.myCheckbox').attr('checked', true);
+$('.myCheckbox').attr('checked', false);
+
+================================================
+// Check if checkbox is checked - jQuery
+// REF - https://stackoverflow.com/questions/7960208/jquery-if-checkbox-is-checked
+
+if ($('input.checkbox_check').is(':checked')) {}
+
+================================================
+// Check if checkbox is NOT checked- jQuery
+// REF - https://stackoverflow.com/questions/11159221/check-if-checkbox-is-not-checked-on-click-jquery
+// Use Logical NOT (!) Operator
+
+if(!$(this).is(':checked')) {}
+================================================
+
+// Disable text selection highlighting? - CSS
+// REF - https://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+================================================
+// Delete multiple array element
+// REF - https://stackoverflow.com/questions/369602/php-delete-an-element-from-an-array
+
+single
+----------
+unset()
+array_splice()
+
+mulitple
+----------
+array_diff()
+array_diff_key()
+array_keys ()
+
+Reindex the keys/ Convert associative keys to numerical keys:
+----------------------------
+array_values()
+
+================================================
+// REF - https://codex.wordpress.org/Validating_Sanitizing_and_Escaping_User_Data
+// Validating Sanitizing and Escaping User Data
+================================================
+// $post is null while in the WP_Query loop - 
+// REF - https://stackoverflow.com/questions/29549997/wp-query-post-name-returns-null
+// REF - https://stackoverflow.com/questions/19348233/post-is-null-while-in-the-loop
+
+use 
+global $post; before loop.
+or
+call $posts = $wp_query->get_posts();
+================================================
+// Posting via the Front End: Inserting
+// Insert / Post Dynamically
+// REF - https://code.tutsplus.com/tutorials/posting-via-the-front-end-inserting--wp-27034
+// REF - https://developer.wordpress.org/reference/functions/wp_insert_post/
+
+wp_insert_post( $postarr );
+
+================================================
+// wordpress sanitize array
+// REF - https://stackoverflow.com/questions/4861053/php-sanitize-values-of-a-array/4861080#4861080
+// REF - https://wordpress.stackexchange.com/questions/24736/wordpress-sanitize-array
+
+// Good idea to make sure things are set before using them
+$tags = isset( $_POST['tags'] ) ? (array) $_POST['tags'] : array();
+
+// Any of the WordPress data sanitization functions can be used here
+$tags = array_map( 'esc_attr', $tags );
+================================================
+// Data Filtering // Data Sanitization
+// REF - http://php.net/manual/en/book.filter.php
+// REF - https://codex.wordpress.org/Data_Validation
+
+================================================
+// Sanitize and Escape Wordpress
+// REF - https://www.sitepoint.com/sanitizing-escaping-validating-data-in-wordpress/
+// REF - https://codex.wordpress.org/Validating_Sanitizing_and_Escaping_User_Data
+================================================
+// Display Date Format - PHP
+// REF - https://stackoverflow.com/questions/5074531/display-date-format
+
+$timestamp = strtotime('2-March-2011');
+$newDate = date('m/d/Y', $timestamp); // Output - 03/02/2011 */
+$newDate = date('F j, Y', $timestamp); // Output -March 2, 2011 */
+================================================
+// REF - https://stackoverflow.com/questions/12980877/parents-without-jquery-or-queryselectorall-for-parents
+// .parents() without jquery - or querySelectorAll for parents [duplicate]
+// REF - http://usefulangle.com/javascript
+.parentNode
+
+================================================
+// Show meta box only when post is being published
+// REF - https://wordpress.stackexchange.com/questions/156603/show-meta-box-only-when-post-is-being-published-first-time
+
+function handyman_register_meta_boxes() {
+
+	global $post;
+
+	if(!isset($post)) return;
+
+	if($post->post_status !== 'publish'){
+        return;
+    } 
+
+    add_meta_box( 'handyman-booking-box-id', 
+    			__( 'Booking Details', 'handyman_pro' ), 
+    			'handyman_booking_details_callback', 
+    			'bookings',
+    			'normal',
+    			'high'
+   	);
+
+
+}
+
+
+add_action( 'add_meta_boxes', 'handyman_register_meta_boxes' );
+
+================================================
+// REF - https://www.w3resource.com/javascript-exercises/javascript-date-exercise-13.php
+// Return the number of minutes in hours and minutes - JS and PHP
+
+function timeConvert(n) {
+var num = n;
+var hours = (num / 60);
+var rhours = Math.floor(hours);
+var minutes = (hours - rhours) * 60;
+var rminutes = Math.round(minutes);
+return num + " minutes = " + rhours + " hour(s) and " + rminutes + " minute(s).";
+}
+
+console.log(timeConvert(200));
+
+
+function timeConvert($n) {
+		//var_dump($n);
+		$num = $n;
+		$hours = ( $num / 60);
+
+		//var_dump($hours);
+		$rhours = floor($hours);
+		$minutes = ($hours - $rhours) * 60;
+		// var_dump($minutes);
+		$rminutes = round($minutes, 2);
+		return $rhours . "." . $rminutes . " Hours";
+	}
+
+================================================
+// REF - https://wordpress.stackexchange.com/questions/56779/check-if-post-is-being-published-for-the-first-time-or-is-an-already-published
+// Check if post is being published for the first time, or is an already published post being updated - WORDPRESS 
+
+draft_to_publish,
+pending_to_publish and
+auto-draft_to_publish 
+
+// hooks
+
+add_action( 'draft_to_publish', 'wpse47566_do_once_on_publish' );
+function wpse47566_do_once_on_publish( $post ) {
+    // check post type if necessary
+    if ( $post->post_type != 'a_specific_type' ) return;
+
+    $post_id = $post->ID;
+
+    if ( !get_post_meta( $post_id, 'mycoderan', $single = true ) ) {
+        // ...run code once
+        update_post_meta( $post_id, 'mycoderan', true );
+    }
+}
+================================================
+
+// How to Display WooCommerce Variations with Color / Size Buttons?
+// REF - https://businessbloomer.com/display-woocommerce-variations-color-size-buttons/
+
+================================================
+// REF - https://stackoverflow.com/questions/1738865/initialize-objects-like-arrays-in-php
+// Initialize Objects like arrays in PHP?
+// Use of new stdClass();
+
+function arrayToObject($array) {
+    if (!is_array($array)) {
+        return $array;
+    }
+
+    $object = new stdClass();
+    if (is_array($array) && count($array) > 0) {
+        foreach ($array as $name=>$value) {
+            $name = strtolower(trim($name));
+            if (!empty($name)) {
+                $object->$name = arrayToObject($value);
+            }
+        }
+        return $object;
+    }
+    else {
+        return FALSE;
+    }
+}
+
+================================================
+// Working with ACF Datepicker
+// REF - https://www.advancedcustomfields.com/resources/javascript-api/
+// REF - https://support.advancedcustomfields.com/forums/topic/how-to-trigger-on-close-datepicker-event/
+
+ var start_date_key = 'field_5c5ecb8d8d419';
+ acf.add_action('date_picker_init', function( $input, args, field ){
+    	
+    	$input.datepicker().on('change', function (e) {
+            console.log($(this).val());
+        });
+
+ });
+
+
+================================================
+// REF - https://tommcfarlin.com/save_post-in-wordpress/
+// REF - https://wordpress.stackexchange.com/questions/51363/how-to-avoid-infinite-loop-in-save-post-callback/51364
+// REF - https://codex.wordpress.org/Plugin_API/Action_Reference/save_post#Avoiding_infinite_loops
+// REF - https://wordpress.stackexchange.com/questions/147505/wp-insert-posts-fatal-error-maximum-function-nesting-level-of-100-reached-ab
+// REF - https://wordpress.stackexchange.com/questions/178747/maximum-function-nesting-level-of-100-reached-after-adding-a-new-filter
+// REF - https://stackoverflow.com/questions/24450822/add-filter-function-not-working-as-expected
+
+// Avoid Loops With save_post in WordPress
+// How to avoid - Maximum function nesting level of '100' reached Issue
+
+// Remove the current filter:
+remove_filter( current_filter(), __FUNCTION__ );
+add_filter( current_filter(), __FUNCTION__ );
+
+
+// this function makes all posts in the default category private
+
+function set_private_categories($post_id) {
+	// If this is a revision, get real post ID
+	if ( $parent_id = wp_is_post_revision( $post_id ) ) 
+		$post_id = $parent_id;
+
+	// Get default category ID from options
+	$defaultcat = get_option( 'default_category' );
+
+	// Check if this post is in default category
+	if ( in_category( $defaultcat, $post_id ) ) {
+		// unhook this function so it doesn't loop infinitely
+		remove_action( 'save_post', 'set_private_categories' );
+
+		// update the post, which calls save_post again
+		wp_update_post( array( 'ID' => $post_id, 'post_status' => 'private' ) );
+
+		// re-hook this function
+		add_action( 'save_post', 'set_private_categories' );
+	}
+}
+add_action( 'save_post', 'set_private_categories' );
+================================================
+
+// Search filter - WordPress
+// Limit Search Results For Specific Post Types in WordPress
+// REF - https://www.wpbeginner.com/wp-tutorials/how-to-limit-search-results-for-specific-post-types-in-wordpress/
+function handyman_searchfilter($query) {
+ 
+    if ($query->is_search && !is_admin() ) {
+        $query->set('post_type', array('post','services'));
+    }
+ 
+return $query;
+}
+ 
+add_filter('pre_get_posts','handyman_searchfilter');
+
+================================================
+// Javascript Full Calendar
+// REF - https://fullcalendar.io/docs/
+// REF - https://fullcalendar.io/releases/fullcalendar/3.10.0/demos/agenda-views.html
+// REF - http://arshaw.com/fullcalendar/
+// REF - https://stackoverflow.com/questions/24658204/how-to-generate-fullcalendar-from-button-click
+// REF - http://jsfiddle.net/marcrazyness/98bu7/
+
+$('#calendar').fullCalendar({
+		      header: {
+		        left: 'prev,next today',
+		        center: 'title',
+		        right: 'month,agendaWeek,agendaDay,listWeek'
+		      },
+		      defaultDate: '2019-01-12',
+		      navLinks: true, // can click day/week names to navigate views
+		      editable: true,
+		      eventLimit: true, // allow "more" link when too many events
+		      events: [
+		        {
+		          title: 'Meeting',
+		          start: '2019-01-12T10:30:00',
+		          end: '2019-01-12T12:30:00'
+		        },
+		        {
+		          title: 'Lunch',
+		          start: '2019-01-12T12:00:00'
+		        },
+		        {
+		          title: 'Meeting',
+		          start: '2019-01-12T14:30:00'
+		        },
+		        {
+		          title: 'Happy Hour',
+		          start: '2019-01-12T17:30:00'
+		        },
+		        {
+		          title: 'Dinner',
+		          start: '2019-01-12T20:00:00'
+		        }
+		      ]
+		});
+
+================================================
+// Open link in different tab - target blank - fullcalendar.io
+// REF - https://stackoverflow.com/questions/22128825/in-fullcalendar-when-clicking-on-an-event-with-an-associated-url
+
+$('#calendar').fullCalendar({
+events: [
+    {
+        title: 'My Event',
+        start: '2010-01-01',
+        url: 'http://stackoverflow.com/'
+    }
+    // other events here
+],
+eventClick: function(event) {
+    if (event.url) {
+        window.open(event.url, "_blank");
+        return false;
+    }
+}
+});
+
+================================================
+// jQuery UI datepicker. Disable array of Dates - ACF
+// REF - https://stackoverflow.com/questions/15400775/jquery-ui-datepicker-disable-array-of-dates
+
+var array = ["2013-03-14","2013-03-15","2013-03-16"];
+
+$('input').datepicker({
+    beforeShowDay: function(date){
+        var string = jQuery.datepicker.formatDate('yy-mm-dd', date);
+        return [ array.indexOf(string) == -1 ]
+    }
+});
+
+================================================
+// Hide / Disable / Remove Content Editor for Specific Page Template - WordPress
+// REF - https://www.isitwp.com/disable-content-editor-for-specific-page-template/
+add_action( 'admin_init', 'hide_editor' );
+function hide_editor() {
+    
+    $post_id = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'];   
+    if( !isset( $post_id ) ) return;
+ 
+    $template_file = get_post_meta($post_id, '_wp_page_template', true);
+     
+    if($template_file == 'page-about.php'){ // edit the template name
+        remove_post_type_support('page', 'editor');
+    }
+}
+================================================
+// Removing the Editor from Post Types
+// REF - https://typerocket.com/docs/v3/removing-the-editor-from-post-types/
+
+add_action( 'init', function() {
+    remove_post_type_support( 'post', 'editor' );
+    remove_post_type_support( 'page', 'editor' );
+}, 99);
+================================================
+// How to disable gutenberg editor wordpress
+// REF - https://kinsta.com/blog/disable-gutenberg-wordpress-editor/
+
+add_filter('use_block_editor_for_post', '__return_false');
+================================================
+// REF - https://stackoverflow.com/questions/33474638/stop-video-from-playing-when-modal-closes
+// Stop video play in the background. Stop video play when modal is closed.
+$(function(){
+    $('#myModal').modal({
+        show: false
+    }).on('hidden.bs.modal', function(){
+        $(this).find('video')[0].pause();
+    });
+});
+
+
+
+================================================
+// Creating Slug out of String - PHP
+// REF - https://css-tricks.com/snippets/php/create-url-slug-from-post-title/
+
+function create_slug($string){
+   $slug=preg_replace('/[^A-Za-z0-9-]+/', '-', $string);
+   return $slug;
+}
+echo create_slug('does this thing work or not');
+
+================================================
+// Add Featured Image programatically - WordPress
+// REF - https://stackoverflow.com/questions/41524931/how-to-set-featured-image-programmatically-from-url
+
+// Add Featured Image to Post
+			    $image_url        = 'http://example.com/image.jpg'; // Define the image URL here
+			    
+			    $parts 			  = parse_url($image_url); 
+			    
+			    $ImagenArr 	      = explode('/', $parts['path']);
+			    $image_name       = $ImagenArr[2];
+			    $upload_dir       = wp_upload_dir(); // Set upload folder
+			    $image_data       = file_get_contents($image_url); // Get image data
+			    $unique_file_name = wp_unique_filename( $upload_dir['path'], $image_name ); // Generate unique name
+			    $filename         = basename( $unique_file_name ); // Create image file name
+
+			    // Check folder permission and define file location
+			    if( wp_mkdir_p( $upload_dir['path'] ) ) {
+			        $file = $upload_dir['path'] . '/' . $filename;
+			    } else {
+			        $file = $upload_dir['basedir'] . '/' . $filename;
+			    }
+
+			    // Create the image  file on the server
+			    file_put_contents( $file, $image_data );
+
+			    // Check image file type
+			    $wp_filetype = wp_check_filetype( $filename, null );
+
+			    // Set attachment data
+			    $attachment = array(
+			        'post_mime_type' => $wp_filetype['type'],
+			        'post_title'     => sanitize_file_name( $filename ),
+			        'post_content'   => '',
+			        'post_status'    => 'inherit'
+			    );
+
+			    // Create the attachment
+			    $attach_id = wp_insert_attachment( $attachment, $file, $post_id );
+
+			    // Include image.php
+			    require_once(ABSPATH . 'wp-admin/includes/image.php');
+
+			    // Define attachment metadata
+			    $attach_data = wp_generate_attachment_metadata( $attach_id, $file );
+
+			    // Assign metadata to attachment
+			    wp_update_attachment_metadata( $attach_id, $attach_data );
+
+			    // And finally assign featured image to post
+			    set_post_thumbnail( $post_id, $attach_id );
+================================================
+// REF - https://stackoverflow.com/questions/7852296/get-only-filename-from-url-in-php-without-any-variable-values-which-exist-in-the
+// Extract file name / Image name from url - PHP
+
+$parts = parse_url('http://example.com/image.jpg');
+$ImagenArr = explode('/', $parts['path']);
+$image_name = $ImagenArr[2];
+
+================================================
+// wp_pagenavi on custom post type/ custom query - WordPress
+
+$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;  
+							
+							$the_query = new WP_Query(array(
+								'post_type' => 'products',
+								'paged'     => $paged,
+								'post_status' => 'publish',
+								'posts_per_page' => 10
+
+							));
+
+wp_pagenavi(array( 'query' => $the_query ));
+ 
+================================================
+// REF - https://stackoverflow.com/questions/9593765/how-to-convert-array-values-from-string-to-int
+// how to convert array values from string to int?
+array_map('intval', explode(',', $data->catIds));
+================================================
+// REF - https://stackoverflow.com/questions/313893/how-to-measure-time-taken-by-a-function-to-execute
+// REF - https://developer.mozilla.org/en-US/docs/Web/API/Performance/now
+// How to measure time taken by a function to execute - JavaScript
+
+var t0 = performance.now();
+
+doSomething();   // <---- The function you're measuring time for 
+
+var t1 = performance.now();
+console.log("Call to doSomething took " + (t1 - t0) + " milliseconds.")
+================================================
+// REF - https://teamtreehouse.com/community/how-do-we-print-out-just-the-decimal-part-of-a-float-value
+// Extract Decimal Value of a given Float Value in Javascript
+
+// note: this is a number and not a string
+var float = 273.15;
+
+// let's get the position of the radix-point
+var radixPos = String(float).indexOf('.');
+
+// now we can use slice, on a String, to get '.15'
+var value = String(float).slice(radixPos);
+
+console.log(value); // '.15'
+
+================================================
+// Wait for User to Stop Typing, Using JavaScript
+// REF - https://schier.co/blog/2014/12/08/wait-for-user-to-stop-typing-using-javascript.html
+================================================
+// Convert Object to Array - Javascript
+// REF - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Object/values
+================================================
+// Quickly Insert Text & Code with Sublime Text Snippets
+// REF - https://youtu.be/zS_4yLizMBw
+
+================================================
+// TinyMCE insert content | Javascript
+// REF - https://stackoverflow.com/questions/31085242/tinymce-4-2-0-got-cannot-read-property-setcontent-of-null
+tinymce.init({
+  selector:'textarea',
+  init_instance_callback : function(editor) {
+    editor.setContent('custom');
+  }
+});
+
+================================================
+// Check if Current Category has Children, WordPress, WP
+// REF - https://wordpress.stackexchange.com/questions/93750/check-if-current-category-has-children
+
+$term = get_queried_object();
+
+$children = get_terms( $term->taxonomy, array(
+'parent'    => $term->term_id,
+'hide_empty' => false
+) );
+// print_r($children); // uncomment to examine for debugging
+if($children) { // get_terms will return false if tax does not exist or term wasn't found.
+    // term has children
+}
+
+================================================
+// Create WordPress Admin Tables - WP_List_Table - WP
+// REF - https://www.sitepoint.com/using-wp_list_table-to-create-wordpress-admin-tables/
+================================================
+// Get array value with unknown key name | PHP
+// REF - https://stackoverflow.com/questions/16119992/get-array-value-with-unknown-key-name
+
+You can use current():
+
+$value = current($array);
+or, if you want the key as well, each():
+
+list($key, $value) = each($array);
+================================================
+Object.values | The Object.values() method returns an array of a given object's own enumerable property values | Javascript
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Object/values
+================================================
+// REF - https://wordpress.stackexchange.com/questions/43624/how-to-choose-which-template-to-be-used-for-multiple-taxonomy-query
+// Load single template for multiple taxonomy
+
+add_filter('template_include', 'addis_agents_load_taxonomy_template');
+
+function addis_agents_load_taxonomy_template( $template ){
+
+    // Array of taxonomies to check
+    $taxes = array('property_features','property_types', 'property_status', 'property_cities');
+
+    global $wp_query;
+
+    if(isset($wp_query->query_vars['taxonomy']) && in_array($wp_query->query_vars['taxonomy'], $taxes)) {
+
+	    $alternate = locate_template('taxonomy-properties.php');
+	    $template = $alternate;
+
+    }
+    
+    return $template;
+}
+
+
+================================================
+
+// Add the "read more" excerpt link and change length
+// REF - https://technumero.com/limit-excerpt-length-wordpress/#How_to_Enable_Custom_Excerpt_option_in_WordPress
+function addis__excerpt_more( $more ) {
+
+return sprintf( '<a class="read-more" href="%1$s">%2$s</a>', get_permalink( get_the_ID() ), __( '... Read More.', 'addis_agents' ) );
+
+}
+
+add_filter( 'excerpt_more', 'addis__excerpt_more' );
+
+function tn_custom_excerpt_length( $length ) {
+	return 50;
+}
+
+add_filter( 'excerpt_length', 'tn_custom_excerpt_length', 999 );
+
+================================================
+WP Trim Words, Word length, wp function
+wp_trim_words( get_the_content() , 30 );
+<?php echo wp_trim_words( get_field('tripp_dest_content') , 30 ); ?>
+================================================
+// REF - https://support.advancedcustomfields.com/forums/topic/hide-taxonomy-term-fields-on-the-main-category-page/
+// Hide ACF Taxonomy Term fields on the main category page
+add_filter('acf/location/rule_match/taxonomy', 'acf_location_rules_match_taxonomy', 20, 3);
+function acf_location_rules_match_taxonomy($match, $rule, $options) {
+  if ($rule['param'] == 'taxonomy' && !isset($_GET['tag_ID'])) {
+    // if the rule is for taxonomy but $_GET['tag_ID'] is not set
+    // then this is the main taxonomy page and not a term page
+    // set match to false
+    $match = false;
+  }
+  return $match;
+}
+
+================================================
+// REF - https://stackoverflow.com/questions/1597736/how-to-sort-an-array-of-associative-arrays-by-value-of-a-given-key-in-php
+// SORT Multi Diamentional Array
+					
+$sortByName = array_column($service_groupn_data, 'name');
+array_multisort($sortByName, SORT_ASC, $service_groupn_data);
+
+================================================
+ACF Front End Form custom post type, Settings, Parameters
+
+// REF - https://www.advancedcustomfields.com/resources/using-acf_form-to-create-a-new-post/
+// REF - https://www.advancedcustomfields.com/resources/acf_form/
+								acf_form(array(
+										'post_id'		=> 'new_post',
+										'field_groups' => array(36,295,46,61,156),
+										'post_title'	=> true,
+										'post_content'	=> false,
+										'new_post'		=> array(
+											'post_type'		=> 'properties',
+											'post_status'	=> 'draft'
+										),
+										'submit_value' => __("Add Property", 'acf'),
+										'updated_message' => __("Property Added for Review", 'acf'),
+								));
+================================================
+SendGrid Integration / v3
+
+
+https://sendgrid.com/docs/for-developers/sending-email/migrating-from-v2-to-v3-mail-send/
+
+https://github.com/sendgrid/sendgrid-php
+================================================
+WP EMAIL content/type
+
+// REF - https://developer.wordpress.org/reference/hooks/wp_mail_content_type/
+
+/**
+ * Filter the mail content type.
+ */
+function wpdocs_set_html_mail_content_type() {
+    return 'text/html';
+}
+add_filter( 'wp_mail_content_type', 'wpdocs_set_html_mail_content_type' );
+ 
+$to      = 'sendto@example.com';
+$subject = 'The subject';
+$body    = 'The email body content';
+ 
+wp_mail( $to, $subject, $body );
+ 
+// Reset content-type to avoid conflicts -- https://core.trac.wordpress.org/ticket/23578
+remove_filter( 'wp_mail_content_type', 'wpdocs_set_html_mail_content_type' );
+
+================================================
+
+Change Header
+=============
+// REF - https://wordpress.stackexchange.com/questions/160017/how-to-set-from-address-according-to-the-form-input-email-address-for-wp-mail
+		// REF - https://www.ostraining.com/blog/wordpress/wp-mail/
+		$headers = array('From: Addis Agents <alert@' . $_SERVER['HTTP_HOST'] . '>');
+$headers = array('From: Addis Agents <alert@' . $_SERVER['HTTP_HOST'] . '>');
+
+================================================
+
+wp admin search by custom fields # WordPRess # WP
+
+// REF - https://mircian.com/2017/03/29/wp-admin-search-custom-fields/
+// REF - https://adambalee.com/search-wordpress-by-custom-fields-without-a-plugin/ -- important
+
+function handyman_search_join( $join ) {
+    global $wpdb;
+
+    if ( is_search() ) {    
+        $join .=' LEFT JOIN '.$wpdb->postmeta. ' ON '. $wpdb->posts . '.ID = ' . $wpdb->postmeta . '.post_id ';
+    }
+
+    return $join;
+}
+
+add_filter('posts_join', 'handyman_search_join' );
+
+function handyman_search_where( $where ) {
+    global $pagenow, $wpdb;
+
+    if ( is_search() ) {
+        $where = preg_replace(
+            "/\(\s*".$wpdb->posts.".post_title\s+LIKE\s*(\'[^\']+\')\s*\)/",
+            "(".$wpdb->posts.".post_title LIKE $1) OR (".$wpdb->postmeta.".meta_value LIKE $1)", $where );
+    }
+
+    return $where;
+}
+
+add_filter( 'posts_where', 'handyman_search_where' );
+
+function handyman_search_distinct( $where ) {
+    global $wpdb;
+
+    if ( is_search() ) {
+        return "DISTINCT";
+    }
+
+    return $where;
+}
+
+add_filter( 'posts_distinct', 'handyman_search_distinct' );
+
+
+================================================
+How to get last inserted row ID from WordPress database?
+// REF - https://stackoverflow.com/questions/1576018/how-to-get-last-inserted-row-id-from-wordpress-database
+
+Straight after the $wpdb->insert() that does the insert, do this:
+$lastid = $wpdb->insert_id;
+
+================================================
+// CHECK WordPress loading sequence
+// REF - https://wordpress.stackexchange.com/questions/71406/is-there-a-flowchart-for-wordpress-loading-sequence
+// REF - https://www.mikeinmonospace.com/wordpress-internals-loading-sequence/
+// REF - https://www.wpbeginner.com/wp-tutorials/how-wordpress-actually-works-behind-the-scenes-infographic/
+// REF - https://wordpress.stackexchange.com/questions/26537/between-functions-php-theme-widgets-and-plugins-which-is-loaded-first
+
+add_action( 'all', '_20161224_printer' );
+function _20161224_printer( $r ){
+
+    $line =  microtime(true)*10000 . ' ' . $r .  "\n";
+    $fp = fopen( ABSPATH . 'hooks.txt', 'a+');
+    fwrite($fp, $line);
+    fclose($fp);
+
+}
+================================================
+// Meta box | custom field
+// How To Create Wordpress Meta Boxes
+// Creating Custom Fields | Meta Boxes Manually in WordPress
+
+REF - https://www.smashingmagazine.com/2011/10/create-custom-post-meta-boxes-wordpress/
+REF - https://premium.wpmudev.org/blog/creating-meta-boxes/
+// REF - https://www.sitepoint.com/adding-meta-boxes-post-types-wordpress/
+
+function global_notice_meta_box() {
+
+    add_meta_box(
+        'global-notice',
+        __( 'Global Notice', 'sitepoint' ),
+        'global_notice_meta_box_callback',
+        'post'
+    );
+}
+
+add_action( 'add_meta_boxes', 'global_notice_meta_box' );
+
+OR 
+
+function global_notice_meta_box() {
+
+    $screens = array( 'post', 'page', 'book' );
+
+    foreach ( $screens as $screen ) {
+        add_meta_box(
+            'global-notice',
+            __( 'Global Notice', 'sitepoint' ),
+            'global_notice_meta_box_callback',
+            $screen
+        );
+    }
+}
+
+add_action( 'add_meta_boxes', 'global_notice_meta_box' );
+
+OR
+
+function global_notice_meta_box() {
+
+    $screens = get_post_types();
+
+    foreach ( $screens as $screen ) {
+        add_meta_box(
+            'global-notice',
+            __( 'Global Notice', 'sitepoint' ),
+            'global_notice_meta_box_callback',
+            $screen
+        );
+    }
+}
+
+add_action( 'add_meta_boxes', 'global_notice_meta_box' );
+
+OR 
+
+function global_notice_meta_box() {
+
+    add_meta_box(
+        'global-notice',
+        __( 'Global Notice', 'sitepoint' ),
+        'global_notice_meta_box_callback'
+    );
+
+}
+
+add_action( 'add_meta_boxes_book', 'global_notice_meta_box' );
+
+
+================================================
+// Get Menu Object / Menu Array in WORDPRESS 
+/* // REF - https://www.invezzatechnologies.com/how-to-get-menu-object-using-menu-name-menu-location-wordpress/
+echo '<pre>';
+$main_menu = 'menu-3';
+$locations  = get_nav_menu_locations();
+// $menu = wp_get_nav_menu_object( $locations[ $main_menu ] );
+var_dump($locations);
+$menuitems = wp_get_nav_menu_items( $locations[ $main_menu] , array( 'order' => 'DESC' ) );
+var_dump($menuitems);
+exit; */
+
+
+================================================
+   // Lazy load
+<img width="100%" data-src="https://www.jiffybanner.com/inventory/1fabd221a764602e3a493d891fce0df0.jpg" />
+
+<script>
+
+   window.addEventListener('load', function(){
+
+        var allimages= document.getElementsByTagName('img');
+
+        for (var i=0; i<allimages.length; i++) {
+
+            if (allimages[i].getAttribute('data-src')) {
+
+                allimages[i].setAttribute('src', allimages[i].getAttribute('data-src'));
+
+            }
+
+        }
+
+    }, false);
+
+</script>
+================================================
+Change military time to standard time AM PM 
+// REF - https://stackoverflow.com/questions/17098158/how-do-i-convert-date-time-from-24-hour-format-to-12-hour-am-pm
+
+$date = '19:24:15 06/13/2013'; 
+echo date('h:i:s a m/d/Y', strtotime($date)); // PHP
+
+// in moment JS
+
+moment('16:00 pm', 'HH:mm A').format('hh:mm A');
+
+
+================================================
+// Add Page | Add Sub Page
+// REF - https://developer.wordpress.org/reference/functions/add_menu_page/
+// REF - https://www.isitwp.com/create-custom-add_menu_page-with-add_submenu_page-admin-panel/
+
+function theme_options_panel(){
+
+  add_menu_page('Theme page title', 'Theme menu label', 'manage_options', 'theme-options', 'wps_theme_func');
+  add_submenu_page( 'theme-options', 'Settings page title', 'Settings menu label', 'manage_options', 'theme-op-settings', 'wps_theme_func_settings');
+  add_submenu_page( 'theme-options', 'FAQ page title', 'FAQ menu label', 'manage_options', 'theme-op-faq', 'wps_theme_func_faq');
+  
+}
+
+add_action('admin_menu', 'theme_options_panel');
+ 
+function wps_theme_func(){
+        echo '<div class="wrap"><div id="icon-options-general" class="icon32"><br></div>
+        <h2>Theme</h2></div>';
+}
+
+function wps_theme_func_settings(){
+        echo '<div class="wrap"><div id="icon-options-general" class="icon32"><br></div>
+        <h2>Settings</h2></div>';
+}
+
+function wps_theme_func_faq(){
+        echo '<div class="wrap"><div id="icon-options-general" class="icon32"><br></div>
+        <h2>FAQ</h2></div>';
+}
+
+================================================
+// Remove image tag | Remove <img> tag from string
+// REF - https://stackoverflow.com/questions/1107194/php-remove-img-tag-from-string/1107203
+<?
+    $content = "this is something with an <img src=\"test.png\"/> in it.";
+    $content = preg_replace("/<img[^>]+\>/i", "(image) ", $content); 
+    echo $content;
+?>
+
+================================================
+// WP Menu Page
+  // REF - https://www.smashingmagazine.com/2011/10/create-custom-post-meta-boxes-wordpress/
+  // REF - https://wpmudev.com/blog/creating-meta-boxes/
+  // REF - https://www.sitepoint.com/adding-meta-boxes-post-types-wordpress/
+
+  function theme_options_panel(){
+    add_menu_page('Theme page title', 'Theme menu label', 'manage_options', 'theme-options', 'wps_theme_func');
+    add_submenu_page( 'theme-options', 'Settings page title', 'Settings menu label', 'manage_options', 'theme-op-settings', 'wps_theme_func_settings');
+    add_submenu_page( 'theme-options', 'FAQ page title', 'FAQ menu label', 'manage_options', 'theme-op-faq', 'wps_theme_func_faq');
+  }
+  add_action('admin_menu', 'theme_options_panel');
+   
+  function wps_theme_func(){
+          echo '<div class="wrap"><div id="icon-options-general" class="icon32"><br></div>
+          <h2>Theme</h2></div>';
+  }
+  function wps_theme_func_settings(){
+          echo '<div class="wrap"><div id="icon-options-general" class="icon32"><br></div>
+          <h2>Settings</h2></div>';
+  }
+  function wps_theme_func_faq(){
+          echo '<div class="wrap"><div id="icon-options-general" class="icon32"><br></div>
+          <h2>FAQ</h2></div>';
+  }
+  
+================================================
+// How to get last inserted row ID from WordPress database?
+// REF - https://stackoverflow.com/questions/1576018/how-to-get-last-inserted-row-id-from-wordpress-database
+// Straight after the $wpdb->insert() that does the insert, do this:
+   $lastid = $wpdb->insert_id;
+================================================
+// Change POST row actions | WordPress
+// REF - https://wordpress.stackexchange.com/questions/8481/custom-post-row-actions
+    add_filter( 'post_row_actions','my_action_row', 10, 2 );
+    
+    function my_action_row( $actions, $post ){
+       if ($post->post_type =="visitor"){
+          //remove what you don't need
+           unset( $actions['inline hide-if-no-js'] );
+           unset( $actions['trash'] );
+           unset( $actions['view'] );
+           //check capabilites
+           $post_type_object = get_post_type_object( $post->post_type );
+           if ( !$post_type_object ) return;
+           if ( !current_user_can( $post_type_object->cap->delete_post, $post->ID ) ) return;
+    
+          //the get the meta and check
+           $state = get_post_meta( $post->ID, 'v_state', true );
+           if ($state == 'in'){
+             $actions['trash'] = "<a class='submitdelete' title='" . esc_attr(__('Delete this item permanently')) . "' href='" . get_delete_post_link($post->ID, '', true) . "'>" . __('Logout') . "</a>";
+           }else{
+             $actions['trash'] = "<a class='submitdelete' title='" . esc_attr(__('Delete this item permanently')) . "' href='" . get_delete_post_link($post->ID, '', true) . "'>" . __('Login') . "</a>";
+    
+    
+           }
+       }
+       return $actions;
+    }
+================================================
+// owl-carousel 2 | Remove Items | JS
+var indexToRemove = 2;
+$(".owl-carousel").trigger('remove.owl.carousel', indexToRemove);
+
+// owl-carousel 2 | Refresh, Reset | JS
+
+
+================================================
+// All customfield | All custom field
+// REF - https://css-tricks.com/snippets/wordpress/dump-all-custom-fields/
+// REF - https://developer.wordpress.org/reference/functions/get_post_custom/
+
+$getPostCustom = get_post_custom(); // Get all the data ?>
+
+
+================================================
+// Adding Custom Fields to Woocommerce Variable Items 
+// This code is from CLASSIC GARDEN
+
+// Add Variation Settings
+add_action( 'woocommerce_product_after_variable_attributes', 'variation_settings_fields', 10, 3 );
+// Save Variation Settings
+add_action( 'woocommerce_save_product_variation', 'save_variation_settings_fields', 10, 2 );
+/**
+ * Create new fields for variations
+ *
+*/
+function variation_settings_fields( $loop, $variation_data, $variation ) {
+  // Text Field
+         
+         if( have_rows('variation_labels') ): // THIS IS ACF REPEATER CODE 
+          $i=0;
+      while ( have_rows('variation_labels') ) : the_row(); // THIS IS ACF REPEATER LOOP
+      
+            $field_name = get_sub_field('label',$post_id);
+            $labe_meta = '_cstm_label_'.$i.'['.$variation->ID.']';
+          woocommerce_wp_text_input( 
+            array( 
+              'id'          => $labe_meta, 
+              'label'       => __( $field_name, 'woocommerce' ), 
+              'placeholder' => '',
+              'desc_tip'    => 'true',
+              'description' => __( 'Enter '.$field_name, 'woocommerce' ),
+              'value'       => get_post_meta( $variation->ID, '_cstm_label_'.$i, true )
+            )
+          );
+          $i++;
+      endwhile;
+
+  endif;  
+}
+/**
+ * Save new fields for variations
+ *
+*/
+function save_variation_settings_fields( $var_id, $i ) {
+
+  $parent_id = wp_get_post_parent_id( $var_id );
+  if( have_rows('variation_labels',$parent_id) ):
+        $i=0;
+      while ( have_rows('variation_labels',$parent_id) ) : the_row();
+      // update_post_meta( $var_id, '_cstm_label_0', esc_attr( $parent_id ) );
+      $label='_cstm_label_'.$i;
+            $_text_field_label1 = $_POST[$label][ $var_id ];
+          if( ! empty( $_text_field_label1 ) ) {
+
+            update_post_meta( $var_id, $label, esc_attr( $_text_field_label1 ) );
+          }
+          $i++;
+      endwhile;
+
+  endif;
+}
+
+
+
+
+================================================
+// REF - https://stackoverflow.com/questions/6320113/how-to-prevent-form-resubmission-when-page-is-refreshed-f5-ctrlr
+
+// keywords: resubmit refresh php
+// How to prevent form resubmission when page is refreshed (F5 / CTRL+R)
+
+<script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
+================================================
+// Generating OTP (One time Password) in PHP
+// GENERATE OTP
+// REF - https://www.geeksforgeeks.org/generating-otp-one-time-password-in-php/
+
+<?php
+  
+// Function to generate OTP
+function generateNumericOTP($n) {
+      
+    // Take a generator string which consist of
+    // all numeric digits
+    $generator = "1357902468";
+  
+    // Iterate for n-times and pick a single character
+    // from generator and append it to $result
+      
+    // Login for generating a random character from generator
+    //     ---generate a random number
+    //     ---take modulus of same with length of generator (say i)
+    //     ---append the character at place (i) from generator to result
+  
+    $result = "";
+  
+    for ($i = 1; $i <= $n; $i++) {
+        $result .= substr($generator, (rand()%(strlen($generator))), 1);
+    }
+  
+    // Return result
+    return $result;
+}
+  
+// Main program
+$n = 6;
+print_r(generateNumericOTP($n));
+  
+?>
+================================================
+// REF - https://stackoverflow.com/questions/1576018/how-to-get-last-inserted-row-id-from-wordpress-database
+// Last inserted row ID from WordPress database?
+$lastid = $wpdb->insert_id;
+================================================
+// REF - https://stackoverflow.com/questions/9802788/call-a-rest-api-in-php
+// REF - Call a REST API in PHP
+
+If you have a url and your php supports it, you could just call file_get_contents:
+
+$response = file_get_contents('http://example.com/path/to/api/call?param1=5');
+if $response is JSON, use json_decode to turn it into php array:
+
+$response = json_decode($response);
+if $response is XML, use simple_xml class:
+
+$response = new SimpleXMLElement($response);
+http://sg2.php.net/manual/en/simplexml.examples-basic.php
+
+================================================
+// Remove Woocommerce sidebar
+// REF - https://stackoverflow.com/questions/35651728/woocommerce-how-to-remove-sidebar
+
+remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
+================================================
+// Woocommerce Cart link and Popups
+// REF - storefront theme by woocommerce
+<li class="woo-cart-link"><a class="cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'wellnesslaw' ); ?>">
+        <?php /* translators: %d: number of items in cart */ ?>
+        <?php echo wp_kses_post( WC()->cart->get_cart_subtotal() ); ?> <span class="count"><?php echo wp_kses_data( sprintf( _n( '%d item', '%d items', WC()->cart->get_cart_contents_count(), 'wellnesslaw' ), WC()->cart->get_cart_contents_count() ) ); ?></span>
+      </a><span class="woo-cart-widget">
+        <?php the_widget( 'WC_Widget_Cart', 'title=' ); ?>
+        </span></li>
+
+================================================
+// REF - https://usersinsights.com/create-wordpress-users-programmatically/
+// Create WordPress users programmatically
+
+$user_id = wp_insert_user( array(
+  'user_login' => 'janedoe',
+  'user_pass' => 'passwordgoeshere',
+  'user_email' => 'jane.doe@example.com',
+  'first_name' => 'Jane',
+  'last_name' => 'Doe',
+  'display_name' => 'Jane Doe',
+  'role' => 'editor'
+));
+================================================
+
+// Woocommerce - Product Page - How to create AJAX on "Add To Cart" button?
+// REF - https://stackoverflow.com/questions/25892871/woocommerce-product-page-how-to-create-ajax-on-add-to-cart-button
+
+<a href="<?php echo $product->add_to_cart_url() ?>" value="<?php echo esc_attr( $product->get_id() ); ?>" class="ajax_add_to_cart add_to_cart_button" data-product_id="<?php echo get_the_ID(); ?>" data-product_sku="<?php echo esc_attr($sku) ?>" aria-label="Add “<?php the_title_attribute() ?>” to your cart"> Add to Cart </a>
+================================================
+Add id and class attributes to a form element - Contact Form 7
+// REF- https://contactform7.com/faq/can-i-add-id-and-class-attributes-to-a-form-element/
+
+Yes. You can add any id and class to a form by adding the html_id and html_class attributes into a [contact-form-7] shortcode.
+
+Example -
+
+[contact-form-7 id="1234" title="Contact form 1" html_id="contact-form-1234" html_class="form contact-form"]
+================================================
+// REF - https://css-tricks.com/snippets/jquery/smooth-scrolling/
+Smooth Scrolling
+================================================
+// REF - https://stackoverflow.com/questions/1531093/how-do-i-get-the-current-date-in-javascript
+// REF - Current Day, Month, Year | Add 0 zero to day, Add 0 zero to month | Add Leading Zero
+
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+var yyyy = today.getFullYear();
+
+today = mm + '/' + dd + '/' + yyyy;
+document.write(today);
+
+
+================================================
+// How to Add Custom Admin Notices, Warning, Error in WordPress
+// REF - https://www.wpbeginner.com/wp-tutorials/how-to-add-admin-notices-in-wordpress/
+
+// WordPress accepts the following notice CSS classes -
+
+// notice-warning
+// notice-error
+// notice-info
+// notice-success
+
+function wpb_admin_notice_warn() {
+global $pagenow;
+
+echo '<div class="notice notice-warning is-dismissible">
+      <p>Important: we will not be publishing any new articles during holidays. Please save your articles as drafts for the time being.</p>
+      </div>'; 
+}
+
+add_action( 'admin_notices', 'wpb_admin_notice_warn' );
+
+================================================
+WordPress: Get checked  / selected taxonomy label custom post type
+// REF - https://stackoverflow.com/questions/42361596/wordpress-get-checked-selected-taxonomy-label
+
+$term_array = array();
+
+$term_list = wp_get_post_terms(get_the_ID(), 'genre', array("fields" => "all"));
+
+foreach($term_list as $term_single) {
+
+    $term_array[] = $term_single->name ; //do something here
+}
+
+OR 
+
+$post_type = get_post_type(get_the_ID());   
+$taxonomies = get_object_taxonomies($post_type);   
+$taxonomy_names = wp_get_object_terms(get_the_ID(), $taxonomies,  array("fields" => "names")); 
+
+
+OR 
+
+$terms = get_the_terms( get_the_ID() , 'locations' );
+
+================================================
+Filter a multi dimensional array by key value
+// REF - https://stackoverflow.com/questions/27447923/how-to-filter-a-two-dimensional-array-by-value
+
+$new = array_filter($arr, function ($var) {
+    return ($var['name'] == 'CarEnquiry');
+});
+
+OR
+
+$filterBy = 'CarEnquiry'; // or Finance etc.
+
+$new = array_filter($arr, function ($var) use ($filterBy) {
+    return ($var['name'] == $filterBy);
+});
+
+================================================
+// Check if value exists in a multidimensional array
+// REF - https://stackoverflow.com/questions/6990855/check-if-a-specific-value-exists-at-a-specific-key-in-any-subarray-of-a-multidim
+
+
+$key = array_search(40489, array_column($userdb, 'uid'));
+
+Example - 
+
+$userdb = Array
+( (0) => Array
+    (
+        (uid) => '100',
+        (name) => 'Sandra Shush',
+        (url) => 'urlof100'
+    ),
+
+(1) => Array
+    (
+        (uid) => '5465',
+        (name) => 'Stefanie Mcmohn',
+        (pic_square) => 'urlof100'
+    ),
+
+(2) => Array
+    (
+        (uid) => '40489',
+        (name) => 'Michael',
+        (pic_square) => 'urlof40489'
+    )
+);
+
+$key = array_search(40489, array_column($userdb, 'uid'));
+
+================================================
+
+// Use jQuery to hide a DIV when the user clicks outside of it
+// REF - https://stackoverflow.com/questions/1403615/use-jquery-to-hide-a-div-when-the-user-clicks-outside-of-it
+
+$(document).mouseup(function(e) 
+{
+    var container = $("YOUR CONTAINER SELECTOR");
+
+    // if the target of the click isn't the container nor a descendant of the container
+    if (!container.is(e.target) && container.has(e.target).length === 0) 
+    {
+        container.hide();
+    }
+});
+
+
+================================================
+// filter_var example | Check If input is a number?
+// REF - https://stackoverflow.com/questions/11418461/php-best-way-to-check-if-input-is-a-valid-number
+
+$options = array(
+    'options' => array('min_range' => 0)
+);
+
+if (filter_var($int, FILTER_VALIDATE_INT, $options) !== FALSE) {
+ // you're good
+}
+
+================================================
+Check Code Execution Time in PHP | Calculating the script execution time in PHP
+
+$start_time = microtime(true);
+
+// your code
+
+$end_time = microtime(true);
+
+$execution_time = $end_time - $start_time;
+
+================================================
+Check Code Execution Time in Javascript | Calculating the script execution time in Javascript
+
+console.time("timer");
+
+// Your Code
+
+console.timeEnd("timer");
+================================================
+// REF - https://wordpress.stackexchange.com/questions/274569/how-to-get-url-of-current-page-displayed
+
+// How to get URL of current page displayed in WordPress
+
+
+global $wp;
+$current_url = home_url(add_query_arg(array(), $wp->request));
+
+================================================
+Change page template dynamically - WP
+
+add_action( 'template_include', 'template_redirect' );
+
+ function template_redirect( $template ) {
+    
+    if( is_page(574) && is_user_logged_in() )
+    {
+         $template = get_stylesheet_directory() . '/page-account.php';
+    }
+
+    return $template;
+ }
+================================================
+// Custom Pagination - WP
+
+// Add it between endwhile and endif.
+
+
+	// Custom Pagination
+	    echo '<div class="custom-pagination">';
+	    echo paginate_links(array(
+	        'total' => $query->max_num_pages,
+	        'current' => $paged,
+	    ));
+	    echo '</div>';
+
+================================================
+// REF - https://wordpress.stackexchange.com/questions/327783/how-to-get-post-type-from-the-functions-php-file
+// How to get Post Type from the functions.php file
+
+
+function my_selective_wpautop() {
+    global $post;
+
+    if( is_singular() ) {
+        if( 'page' == $post->post_type ) {
+            remove_filter( 'the_content', 'wpautop' );
+        } elseif ( 'post' == $post->post_type ) {
+            add_filter( 'the_content', 'wpautop' );
+        }
+    }
+}
+
+add_action( 'wp_head', 'my_selective_wpautop' );
+
+
+================================================
+// Fetch only the submenu of a specific menu item ID  in JSON format from a WordPress website
+
+function expose_submenu($request) {
+  $menu_id = $request['menu_id'];
+  $parent_item_id = $request['parent_id'];
+
+  // Get all menu items for the specified menu
+  $menu_items = wp_get_nav_menu_items($menu_id);
+
+  // Filter submenu items based on the parent item ID
+  $submenu_items = array_filter($menu_items, function ($item) use ($parent_item_id) {
+    return $item->menu_item_parent == $parent_item_id;
+  });
+
+  return $submenu_items;
+}
+
+function expose_submenu_to_rest() {
+  register_rest_route( 'wp/v2', '/submenu/(?P<menu_id>\d+)/(?P<parent_id>\d+)', [
+    'methods' => 'GET',
+    'callback' => 'expose_submenu',
+  ]);
+}
+
+add_action('rest_api_init', 'expose_submenu_to_rest');
+
+================================================
+// Retrieve menu data in JSON format from a WordPress website
+
+function expose_navigation($request) {
+  $id = $request['id'];
+  return wp_get_nav_menu_items($id);
+}
+
+function expose_navigation_to_rest() {
+  register_rest_route( 'wp/v2', '/navigation/(?P<id>\d+)', [
+      'methods' => 'GET',
+      'callback' => 'expose_navigation'
+    ]
+  );
+}
+
+add_action('rest_api_init', 'expose_navigation_to_rest');
+
+================================================
+================================================
+================================================
+================================================
+================================================
+================================================
+================================================
+================================================
+================================================
+================================================
+================================================
+================================================
+================================================
+================================================
+================================================
+================================================
+================================================
+================================================
+================================================
+================================================
+================================================
+================================================
+================================================
+================================================
+================================================
+================================================

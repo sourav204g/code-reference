@@ -1,0 +1,16 @@
+body.taxonomy-locations h2, body.taxonomy-photography_types h2 { display: none; }
+
+body.taxonomy-locations #col-right {
+    float: left;
+    width: 65%;
+}
+
+.post-type-bookings #postbox-container-2 .postbox-header, #travelt-booking-box-id .postbox-header { background-image: linear-gradient(#282f33, #121c20); }
+#postbox-container-2 .postbox-header h2.hndle.ui-sortable-handle, #travelt-booking-box-id .postbox-header h2.hndle.ui-sortable-handle { color: white; }
+
+
+em.rcm-status {
+    display: inline-block;
+    margin-left: 5px;
+    color: blanchedalmond;
+}

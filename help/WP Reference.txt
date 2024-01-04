@@ -1,0 +1,384 @@
+Disable the Gutenberg WordPress Editor
+add_filter('use_block_editor_for_post', '__return_false', 10);
+
+
+https://www.wpbeginner.com/glossary/
+
+https://developer.wordpress.org/
+https://codex.wordpress.org/
+
+https://developer.wordpress.org/reference/
+https://developer.wordpress.org/themes/getting-started/setting-up-a-development-environment/
+https://developer.wordpress.org/themes/advanced-topics/child-themes/
+
+https://wordpress.org/support/article/debugging-in-wordpress/
+
+https://wordpress.org/plugins/query-monitor/
+
+
+How to Make Custom REST API
+https://wptips.dev/custom-rest-api/
+
+
+The Customizer API
+https://wptips.dev/simplify-wp-customizer-api/
+
+
+How to Create A Custom Block
+https://wptips.dev/custom-block-without-plugin/
+
+
+Working with Date/Time Object in WordPress
+https://wptips.dev/datetime-object/
+
+
+Defer Parsing of JavaScript in WordPress
+https://wpshout.com/defer-parsing-javascript-wordpress/
+
+
+https://wpshout.com/how-to-debug-wordpress-beyond-the-basics/
+
+------------------------
+
+responsive Images
+https://developer.wordpress.org/apis/handbook/responsive-images/
+
+<?php
+$img_src = wp_get_attachment_image_url( $attachment_id, 'medium' );
+$img_srcset = wp_get_attachment_image_srcset( $attachment_id, 'medium' );
+?>
+<img src="<?php echo esc_url( $img_src ); ?>"
+     srcset="<?php echo esc_attr( $img_srcset ); ?>"
+     sizes="(max-width: 50em) 87vw, 680px" alt="Foo Bar">
+
+
+------------------------
+
+
+https://usersinsights.com/create-wordpress-users-programmatically/
+
+$user_id = wp_insert_user( array(
+  'user_login' => 'janedoe',
+  'user_pass' => 'passwordgoeshere',
+  'user_email' => 'jane.doe@example.com',
+  'first_name' => 'Jane',
+  'last_name' => 'Doe',
+  'display_name' => 'Jane Doe',
+  'role' => 'editor'
+));
+
+https://developer.wordpress.org/themes/basics/conditional-tags/
+https://developer.wordpress.org/themes/basics/template-hierarchy/
+https://developer.wordpress.org/themes/basics/post-types/
+https://developer.wordpress.org/themes/basics/template-tags/
+
+https://developer.wordpress.org/themes/theme-security/data-sanitization-escaping/
+https://developer.wordpress.org/themes/theme-security/data-validation/
+
+https://developer.wordpress.org/themes/theme-security/using-nonces/
+https://developer.wordpress.org/themes/theme-security/common-vulnerabilities/
+
+https://developer.wordpress.org/themes/advanced-topics/child-themes/
+
+https://developer.wordpress.org/themes/basics/template-files/
+
+https://developer.wordpress.org/themes/advanced-topics/plugin-api-hooks/
+
+https://wordpress.org/support/article/roles-and-capabilities/
+
+
+ACF
+https://www.advancedcustomfields.com/resources/register-fields-via-php/
+
+
+https://www.sitepoint.com/sanitizing-escaping-validating-data-in-wordpress/
+https://www.smashingmagazine.com/2011/10/create-custom-post-meta-boxes-wordpress/
+https://code.tutsplus.com/tutorials/how-to-create-custom-wordpress-writemeta-boxes--wp-20336
+https://codex.wordpress.org/Options_API
+
+https://www.sitepoint.com/author/nprusty/
+==========================================
+https://www.sitepoint.com/wordpress-dashboard-widgets-api/
+
+https://www.sitepoint.com/adding-custom-meta-boxes-to-wordpress/
+https://www.sitepoint.com/getting-started-with-the-wordpress-theme-customization-api/
+https://www.sitepoint.com/create-a-wordpress-theme-settings-page-with-the-settings-api/
+
+https://www.sitepoint.com/creating-a-base-plugin-for-wordpress-org-plugin-directory/
+
+
+
+https://developer.wordpress.org/reference/functions/get_terms/
+
+
+WooCommerce
+===============
+
+// Remove WooCommerce Sidebar
+remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
+
+https://www.businessbloomer.com/woocommerce-single-product-image/
+
+// Woocommerce - Product Page - How to create AJAX on "Add To Cart" button?
+// REF - https://stackoverflow.com/questions/25892871/woocommerce-product-page-how-to-create-ajax-on-add-to-cart-button
+
+<a href="<?php echo $product->add_to_cart_url() ?>" value="<?php echo esc_attr( $product->get_id() ); ?>" class="ajax_add_to_cart add_to_cart_button" data-product_id="<?php echo get_the_ID(); ?>" data-product_sku="<?php echo esc_attr($sku) ?>" aria-label="Add “<?php the_title_attribute() ?>” to your cart"> Add to Cart </a>
+
+
+
+https://www.businessbloomer.com/woocommerce-easily-get-product-info-title-sku-desc-product-object/
+https://www.businessbloomer.com/woocommerce-visual-hook-guide-single-product-page/
+
+https://www.businessbloomer.com/woocommerce-custom-add-cart-urls-ultimate-guide/
+
+
+WooCommerce Blog Search Filters
+https://www.businessbloomer.com/blog/
+
+https://www.businessbloomer.com/tag/product-category/
+
+https://www.businessbloomer.com/woocommerce-force-max-1-category-per-product/
+
+https://www.businessbloomer.com/woocommerce-get-return-all-product-ids/
+
+
+https://woocommerce.com/documentation/plugins/projects/codex-projects/
+https://woocommerce.com/storefront/ -- Storefront is the perfect theme for your next WooCommerce project. Designed and developed by WooCommerce Core developers.
+
+https://woocommerce.github.io/code-reference/index.html
+
+
+product->is_type( 'variable' );
+https://www.businessbloomer.com/woocommerce-conditional-logic-ultimate-php-guide/
+
+https://www.businessbloomer.com/woocommerce-additional-acceptance-checkbox-checkout/
+
+====================
+
+
+
+https://www.businessbloomer.com/woocommerce-easily-get-product-info-title-sku-desc-product-object/
+
+// Get Product ID
+$product->get_id();
+  
+// Get Product General Info
+  
+$product->get_type();
+$product->get_name();
+$product->get_slug();
+$product->get_date_created();
+$product->get_date_modified();
+$product->get_status();
+$product->get_featured();
+$product->get_catalog_visibility();
+$product->get_description();
+$product->get_short_description();
+$product->get_sku();
+$product->get_menu_order();
+$product->get_virtual();
+get_permalink( $product->get_id() );
+  
+// Get Product Prices
+  
+$product->get_price();
+$product->get_regular_price();
+$product->get_sale_price();
+$product->get_date_on_sale_from();
+$product->get_date_on_sale_to();
+$product->get_total_sales();
+  
+// Get Product Tax, Shipping & Stock
+  
+$product->get_tax_status();
+$product->get_tax_class();
+$product->get_manage_stock();
+$product->get_stock_quantity();
+$product->get_stock_status();
+$product->get_backorders();
+$product->get_sold_individually();
+$product->get_purchase_note();
+$product->get_shipping_class_id();
+  
+// Get Product Dimensions
+  
+$product->get_weight();
+$product->get_length();
+$product->get_width();
+$product->get_height();
+$product->get_dimensions();
+  
+// Get Linked Products
+  
+$product->get_upsell_ids();
+$product->get_cross_sell_ids();
+$product->get_parent_id();
+  
+// Get Product Variations and Attributes
+ 
+$product->get_children(); // get variations
+$product->get_attributes();
+$product->get_default_attributes();
+$product->get_attribute( 'attributeid' ); //get specific attribute value
+  
+// Get Product Taxonomies
+  
+$product->get_categories();
+$product->get_category_ids();
+$product->get_tag_ids();
+  
+// Get Product Downloads
+  
+$product->get_downloads();
+$product->get_download_expiry();
+$product->get_downloadable();
+$product->get_download_limit();
+  
+// Get Product Images
+  
+$product->get_image_id();
+$product->get_image();
+$product->get_gallery_image_ids();
+  
+// Get Product Reviews
+  
+$product->get_reviews_allowed();
+$product->get_rating_counts();
+$product->get_average_rating();
+$product->get_review_count();
+
+======================================================
+
+<?php 
+
+// How to Add Custom Registration Form Fields in WooCommerce
+// REF - https://www.cloudways.com/blog/add-woocommerce-registration-form-fields/
+
+function wooc_extra_register_fields() { ?>
+
+       <p class="form-row form-row-first">
+
+       <label for="reg_billing_first_name"><?php _e( 'First name', 'woocommerce' ); ?><span class="required">*</span></label>
+
+       <input type="text" class="input-text" name="billing_first_name" id="reg_billing_first_name" value="<?php if ( ! empty( $_POST['billing_first_name'] ) ) esc_attr_e( $_POST['billing_first_name'] ); ?>" />
+
+       </p>
+
+       <p class="form-row form-row-last">
+
+       <label for="reg_billing_last_name"><?php _e( 'Last name', 'woocommerce' ); ?><span class="required">*</span></label>
+
+       <input type="text" class="input-text" name="billing_last_name" id="reg_billing_last_name" value="<?php if ( ! empty( $_POST['billing_last_name'] ) ) esc_attr_e( $_POST['billing_last_name'] ); ?>" />
+
+       </p>
+
+       <div class="clear"></div>
+
+       <?php
+
+ }
+
+ add_action( 'woocommerce_register_form_start', 'wooc_extra_register_fields' );
+
+
+ function wooc_validate_extra_register_fields( $username, $email, $validation_errors ) {
+
+      if ( isset( $_POST['billing_first_name'] ) && empty( $_POST['billing_first_name'] ) ) {
+
+             $validation_errors->add( 'billing_first_name_error', __( '<strong>Error</strong>: First name is required!', 'woocommerce' ) );
+
+      }
+
+      if ( isset( $_POST['billing_last_name'] ) && empty( $_POST['billing_last_name'] ) ) {
+
+             $validation_errors->add( 'billing_last_name_error', __( '<strong>Error</strong>: Last name is required!.', 'woocommerce' ) );
+
+      }
+         return $validation_errors;
+}
+
+add_action( 'woocommerce_register_post', 'wooc_validate_extra_register_fields', 10, 3 );
+
+function wooc_save_extra_register_fields( $customer_id ) {
+
+      if ( isset( $_POST['billing_first_name'] ) ) {
+
+             //First name field which is by default
+
+             update_user_meta( $customer_id, 'first_name', sanitize_text_field( $_POST['billing_first_name'] ) );
+
+             // First name field which is used in WooCommerce
+
+             update_user_meta( $customer_id, 'billing_first_name', sanitize_text_field( $_POST['billing_first_name'] ) );
+
+      }
+
+      if ( isset( $_POST['billing_last_name'] ) ) {
+
+             // Last name field which is by default
+
+             update_user_meta( $customer_id, 'last_name', sanitize_text_field( $_POST['billing_last_name'] ) );
+
+             // Last name field which is used in WooCommerce
+
+             update_user_meta( $customer_id, 'billing_last_name', sanitize_text_field( $_POST['billing_last_name'] ) );
+
+      }
+
+}
+
+add_action( 'woocommerce_created_customer', 'wooc_save_extra_register_fields' );
+
+==========================================
+
+// https://www.businessbloomer.com/woocommerce-add-new-tab-account-page/
+// REF - How to Add a New Tab @ WooCommerce My Account Page
+
+/**
+ * @snippet       WooCommerce Add New Tab @ My Account
+ * @how-to        Get CustomizeWoo.com FREE
+ * @author        Rodolfo Melogli
+ * @compatible    WooCommerce 5.0
+ * @donate $9     https://businessbloomer.com/bloomer-armada/
+ */
+  
+// ------------------
+// 1. Register new endpoint (URL) for My Account page
+// Note: Re-save Permalinks or it will give 404 error
+  
+function bbloomer_add_premium_support_endpoint() {
+    add_rewrite_endpoint( 'premium-support', EP_ROOT | EP_PAGES );
+}
+  
+add_action( 'init', 'bbloomer_add_premium_support_endpoint' );
+  
+// ------------------
+// 2. Add new query var
+  
+function bbloomer_premium_support_query_vars( $vars ) {
+    $vars[] = 'premium-support';
+    return $vars;
+}
+  
+add_filter( 'query_vars', 'bbloomer_premium_support_query_vars', 0 );
+  
+// ------------------
+// 3. Insert the new endpoint into the My Account menu
+  
+function bbloomer_add_premium_support_link_my_account( $items ) {
+    $items['premium-support'] = 'Premium Support';
+    return $items;
+}
+  
+add_filter( 'woocommerce_account_menu_items', 'bbloomer_add_premium_support_link_my_account' );
+  
+// ------------------
+// 4. Add content to the new tab
+  
+function bbloomer_premium_support_content() {
+   echo '<h3>Premium WooCommerce Support</h3><p>Welcome to the WooCommerce support area. As a premium customer, you can submit a ticket should you have any WooCommerce issues with your website, snippets or customization. <i>Please contact your theme/plugin developer for theme/plugin-related support.</i></p>';
+   echo do_shortcode( ' /* your shortcode here */ ' );
+}
+  
+add_action( 'woocommerce_account_premium-support_endpoint', 'bbloomer_premium_support_content' );
+// Note: add_action must follow 'woocommerce_account_{your-endpoint-slug}_endpoint' format

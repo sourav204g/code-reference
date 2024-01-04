@@ -1,0 +1,128 @@
+			.forsticky.sticky { position: static !important; } 
+			
+			.cart-page h3 {
+				text-transform: uppercase;
+	    		padding-top: 17px;
+			}
+			.cart-product h3 { font-size: 14px; }
+			
+			/*.input-group-field {
+			    width: 100%; 
+			    height: 55px;
+			}*/
+			.signup22 .input-group-button { display: flex; width: 100%; flex-direction: column; }
+			
+			button.button11 {
+			    font-size: 16px !important;
+			    flex: 1;
+			    
+			}
+			button.button11:first-child {
+			    background-color: #4caf50;
+			    padding: 18px 15px;
+			}
+
+			.signup22 .input-group-button .button12 {
+				padding: 18px 15px;
+			}
+
+            .bgd8{
+				background-color: #4CAF50 !important;
+				border-radius: 0px;
+				margin-right: 12px !important;
+             }
+             .bgcc{
+             	background: #fff !important;
+             	border: none;
+             	width: 100% !important
+             }
+			
+			@media only screen and (max-width: 570px) and (min-width: 320px){
+				.signup22 .input-group-button { display: inherit !important; width: 100% !important; }
+			     button.button11:first-child {
+				    background-color: #4caf50;
+				  
+				    padding: 12px 15px !important;
+				    width: 100% !important;
+				    margin-top: 10px !important;
+				}
+				.cart-head2 {
+				    text-align: right;
+				    position: absolute;
+				    font-size: 15px !important;
+				    color: #fff;
+				    right: 30px;
+				    top: 10px !important;
+				}
+				.cart-page h3 {
+				     text-transform: capitalize !important;
+				    padding-top: 16px;
+				}
+			}
+			
+			.revise--btn-group {
+				    display: flex;
+				    flex-direction: column;
+				    width: 40%;
+				    margin: 0 auto;
+			}
+
+			.revise--btn-group button { margin-right: 0px !important; }	
+
+			@media screen and (min-width: 1200px) {
+				.revise--btn-group {
+			    	/* overflow: hidden; */
+				    display: flex;
+				    flex-direction: row;
+				    width: 50%;
+				    margin: 0 auto;
+				}
+				.revise--btn-group.schedule-btns a:first-child { display: none; }
+				.live-scheduling-container { display: block !important; }
+			}
+
+			@media (max-width: 767px) {
+				.cart-page h3 {
+				text-transform: capitalize !important;
+				padding-top: 8px !important;
+				right: 28px !important;
+				top: 12px !important;
+				}
+			}
+
+
+			.hnd-terms {
+			    background: #f0f0f0;
+			    padding: 20px !important;
+			}
+
+			.hnd-terms span {
+			    margin-right: 40px;
+			}
+
+			.hnd-terms a { color: brown; }
+
+			.hnd-terms.hnd-terms-content.container {
+			    border-top: 1px solid #ddd;
+			}
+
+			.hnd-terms.hnd-terms-content.container > p { margin-bottom: 0px !important; }
+
+			.hnd-terms.hnd-terms-content.container > strong {
+			    display: block;
+			    margin-bottom: 10px;
+			}
+			
+			.termsval { display: none; }
+			
+			@media print{
+				.print-hide { display: none !important; }
+				.termsval { display: block !important; page-break-inside: avoid; }
+				 #filter { display: block !important; }
+			}
+
+			.hnd-cart-warning { color: #FF5722; }
+			.hnd-cart-warning b { font-weight: bold; }
+
+			tbody ul li { list-style: disc; }
+			tbody ul { padding-left: 40px; }

@@ -1,0 +1,622 @@
+#pageparentdiv, #screen-meta label[for=pageparentdiv-hide] { display: block !important; }
+
+#pageparentdiv #parent_id, 
+#pageparentdiv p.post-attributes-label-wrapper.menu-order-label-wrapper,
+#pageparentdiv p.post-attributes-label-wrapper.parent-id-label-wrapper,
+#pageparentdiv #menu_order,
+#pageparentdiv p.post-attributes-help-text { display: none; }
+
+
+
+.welcome-panel, .welcome-panel:before { background: none !important; }
+
+.welcome-panel { background: white !important; padding: 25px; }
+
+#hnd-reviews-admin {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#hnd-reviews-admin td, #hnd-reviews-admin th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#hnd-reviews-admin tr:nth-child(even){background-color: #f2f2f2;}
+
+#hnd-reviews-admin tr:hover {background-color: #ddd;}
+
+#hnd-reviews-admin th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 17px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .1s;
+  transition: .1s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .1s;
+  transition: .1s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(13px);
+  -ms-transform: translateX(13px);
+  transform: translateX(13px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/*.toplevel_page_zipcode-settings #post-body #postbox-container-2 {
+	width: 40%;
+}*/
+
+/* div#acf-group_5c3edae13c928, div#acf-group_5d2ecc7f243cc 
+} */
+
+th[data-name="hnd_featured_services"] { width: 40% !important; }
+th[data-name="hnd_featured_listing"] { width: 9% !important; }
+th[data-name="hnd_todays_discount"] { width: 0% !important; }
+
+.misc-pub-section.misc-pub-visibility { display: none; }
+
+#acf-group_5b1a64aaa229f { display: none; } /* Previous Booking Details */
+#edit-slug-box { display: none; } /* permalink */
+
+[data-name="hnd_full_calendar"] {
+    background: white;
+    box-shadow: 0px 2px 2px 0px #b5b1b1;
+}
+
+#handyman-full-calendar .fc-toolbar .fc-center h2 {
+    background-image: linear-gradient(to bottom,#fff,#e6e6e6);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+    color: #23282d;
+    width: 150px;
+}
+
+/* For Firefox */
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+#collapse-menu, #screen-meta-links { display: none; } /* Screen option and Collapse admin menubar  */
+
+.nm-admin-page .tabs-container, 
+.nm-admin-page .nm-admin-page { display: none; }
+
+.nm-admin-page .metabox-holder.sidebar-container {
+    display: none;
+}
+
+.nm-admin-page #review_category,
+.nm-admin-page td.review_category.column-review_category {
+    display: none;
+}
+
+.nm-admin-page .metabox-holder.content-container {
+    width: 100% !important;
+}
+
+/* Webkit browsers like Safari and Chrome */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.post-type-bookings #titlewrap {
+    pointer-events: none;
+    display: none;
+}
+
+/* Hide Products, Services, Customer Details */
+.post-php.post-type-bookings #acf-group_5c6ce879e872c, .post-php.post-type-bookings #acf-group_5c67bed39f809 { display: none !important; }
+
+#wpcontent { position: relative; }
+
+.loader_container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: 9;
+}
+
+.handyman_loader {
+	  border: 16px solid #f3f3f3;
+	  border-radius: 50%;
+	  border-top: 16px solid #3498db;
+	  width: 30px;
+	  height: 30px;
+	  -webkit-animation: spin 2s linear infinite; /* Safari */
+	  animation: spin 2s linear infinite;
+	  position: absolute;
+	  margin: auto;
+	  left: 0;
+	  right: 0;
+	  bottom: 0;
+	  top: 0;
+	  z-index: 99;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+/*body.post-type-pros .acf-field.acf-field-group.acf-field-5b16601c62220 {
+    grid-column: 1/3;
+    grid-row: 3;
+}*/
+
+body.post-type-pros #acf-group_5b17cd04677e7 .inside.acf-fields.-top { /* Post Type: Pros */
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+body.post-type-customers #acf-group_5b1a63a3e4bb6 .inside.acf-fields.-top { /* Post Type: Customers | Customer Details Section */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+[data-name="pro_show_saturday_as_available"] { grid-column: 1 / 3; }
+[data-name="pro_show_sunday_as_available"] { grid-column: 3 / 5; }
+[data-name="pro_show_evening_as_available"] { grid-column: 5 / 7; }
+
+[data-name="pro_premium"] { grid-column: 1 / 3; }
+[data-name="pro_is_certified"] { grid-column: 3 / 4; }
+[data-name="pro_has_insurance"] { grid-column: 4 / 5; }
+[data-name="pro_is_awarded"] { grid-column: 5 / 7; }
+
+[data-name="pro_communication_method"] { grid-column: 1 / 3; }
+[data-name="pro_username"] { grid-column: 3 / 5; /* pointer-events: none; */ background: rgba(222, 184, 135, 0.17); }
+[data-name="pro_password"] { grid-column: 5 / 7; /* pointer-events: none; */ background: rgba(222, 184, 135, 0.17); }
+[data-name="pro_schedule_time"] { grid-column: 1 / 4; }
+[data-name="pro_schedule_off_dates"] { grid-column: 4 / 7; }
+
+
+[data-name="pro_working_zipcodes"] { grid-column: 1 / 4; }
+[data-name="pro_tools_inventory"] { grid-column: 4/ 7; }
+
+[data-name="hnd_full_calendar"] { grid-column: 1 / 7; }
+[data-name="hnd_full_calendar"] .acf-input .acf-input-wrap { display: none; }
+
+body.post-type-pros .acf-label { display: flex; }
+body.post-type-pros .acf-field p.description { margin-left: 4px; }
+
+
+[data-name="pro_username"] .acf-input .acf-input-wrap input,
+[data-name="pro_password"] .acf-input .acf-input-wrap input,
+[data-name="pro_email"]    .acf-input .acf-input-wrap input {
+    background: rgba(63, 81, 181, 0.07);
+}
+
+body.post-type-pros #poststuff #postbox-container-2 h2 {
+    font-size: 14px;
+    padding: 8px 12px;
+    margin: 0;
+    line-height: 1.4;
+    background: #23282d;
+    color: white;
+}
+
+body.post-type-pros .inside.acf-fields.-top, body.post-type-customers .inside.acf-fields.-top { /* Post Type: Pros */ 
+    background: #eeeeee;
+    box-shadow: inset 0 0 50px #afafaf;
+    border: 2px solid #fff;
+    padding: 50px 20px!important;
+}
+
+body.post-type-customers #acf-group_5b1a64aaa229f input, 
+body.post-type-customers #acf-group_5b1a64aaa229f select, 
+body.post-type-customers #acf-group_5b1a64aaa229f textarea { /* Previous Bookings */
+    pointer-events: none;
+    border: none;
+}
+
+body.post-type-customers .acf-actions, body.post-type-customers .acf-row-handle { display: none; }
+
+body.post-type-pros #acf-group_5b165f2dedab2 .inside.acf-fields.-top {
+    display: grid;
+    /*grid-template-columns: 1fr 1fr 1fr;*/
+    grid-template-columns: repeat(6, 1fr);
+}
+
+[data-name="pros_first_name"] { grid-column: 1 / 3; }
+[data-name="pros_last_name"] { grid-column: 3 / 5; }
+[data-name="pro_email"] { grid-column: 5 / 7; /* pointer-events: none;  background: rgba(222, 184, 135, 0.17); */ }
+
+[data-name="pro_bio_about"] { grid-column: 1 / 7; }
+
+[data-name="pro_home_phone"] { grid-column: 1 / 3; }
+[data-name="pro_cell_phone"] { grid-column: 3 / 5; }
+[data-name="pro_fax"] { grid-column: 5 / 6; }
+[data-name="pro_years_of_experience"] { grid-column: 6 / 7; }
+[data-name="pro_address_group"] { grid-column: 1 / 7; }
+
+/*body.post-type-pros .acf-field.acf-field-group.acf-field-5b16601c62220 .acf-input .acf-fields.-border .acf-field.acf-field-text.acf-field-5b16608b62224 {
+	    grid-column: 1/3;
+	    grid-row: 2;
+}*/
+
+@media screen and (min-width: 1100px) {
+
+	body.post-type-pros .acf-field.acf-field-group.acf-field-5b16601c62220 .acf-input .acf-fields.-border {
+	    display: grid;
+	    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	}
+
+	/*body.post-type-pros .acf-field.acf-field-group.acf-field-5b16601c62220 .acf-input .acf-fields.-border .acf-field.acf-field-text.acf-field-5b16608b62224 {
+	    grid-column: initial;
+	    grid-row: initial;
+	}*/
+
+}
+
+#poststuff .stuffbox>h3, #poststuff h2, #poststuff h3.hndle {
+    font-size: 14px;
+    padding: 8px 12px;
+    margin: 0;
+    line-height: 1.4;
+    background: #23282d;
+    color: white;
+}
+
+
+#acf-group_5b1a64aaa229f {
+    width: 124%;
+}
+
+
+/* Uncomment if needed. */
+/* #service_categorieschecklist > li > .children { 
+    display: none;
+} */
+
+.booking-card-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.booking-card-container .customer-card {
+    width: 100%;
+    background: -webkit-linear-gradient(#364b63, #090f13) #000000;
+    background: -o-linear-gradient(#364b63, #090f13) #000000;
+    background: linear-gradient(#364b63, #090f13) #000000;
+}
+
+.booking-card, .customer-card {
+    flex: 1 0 21%;
+    margin: 10px;
+    padding: 20px 60px;
+    color: #f1f1f1;
+    background: -webkit-linear-gradient(#364b63, #090f13) #000000;
+    background: -o-linear-gradient(#364b63, #090f13) #000000;
+    background: linear-gradient(#364b63, #090f13) #000000;
+    box-shadow: 7px 8px 10px -3px rgba(0, 0, 0, 0.5);
+    position: relative;
+
+}
+
+.customer-card table {
+    width: 100%;
+    text-align: left;
+    margin-top: 40px;
+}
+
+.customer-card table tr th {
+    color: #92aac1;
+    font-weight: normal;
+}
+
+.customer-card table tr td {
+    border: 1px solid #263647;
+    padding: 5px;
+    color: burlywood;
+}
+
+.customer-card table tr td span {
+    color: #546f90;
+}
+
+.booking-card-label, .completion-time, .handyman-name, .arrival-time, .job-date {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: black;
+    padding: 8px;
+    text-transform: uppercase;
+    font-size: 10px;
+}
+
+.booking-card-label.product-lb {background: #582e2e;}
+
+.job-date {
+    left: 108px;
+    background: #c2185b;
+    font-weight: bold;
+}
+
+.completion-time {
+    left: auto;
+    right: 0px;
+}
+
+.arrival-time {
+    left: 220px;
+    background: #c2185b;
+    font-weight: bold;
+}
+
+.handyman-name {
+    left: 339px;
+    background: #3F51B5;
+    font-weight: bold;
+}
+
+.booking-card table { color: white; width: 100%; margin: 30px auto; }
+.booking-card table tbody tr:first-child td:last-child { text-align: right; }
+.booking-card table tbody tr td:first-child { color: #84d3ff; vertical-align: top; }
+.booking-card .options li { display: flex; justify-content: space-between; }
+.booking-card table tbody tr:nth-child(3) td:last-child, .booking-card table tbody tr:last-child td:last-child { text-align: right; }
+
+.booking-card table tbody tr:nth-child(3) td { padding-bottom: 10px; }
+.booking-card table tbody tr:nth-child(4) td { padding-top: 10px; padding-bottom: 10px; border-top: 1px solid #525a62; border-bottom: 1px solid #525a62; }
+.booking-card table tbody tr:nth-child(4) td:last-child { text-align: right; }
+.booking-card table tbody tr:last-child td   {}
+
+
+@media screen and (max-width: 1210px) {
+    .customer-card tr {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .customer-card table tr td {
+        border: none;
+    }
+}
+
+
+
+/* Bookings */
+
+#acf-group_614c9ea483d90 { display: none !important; } /* REST API Response */ 
+
+body.post-type-bookings #acf-group_5c67bed39f809 .inside.acf-fields.-top { /* Post Type: Pros */
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    background: #eeeeee;
+    box-shadow: inset 0 0 50px #afafaf;
+    border: 2px solid #fff;
+    padding: 50px 20px!important;
+}
+
+body.post-type-bookings #acf-group_5c6ce879e872c .inside.acf-fields.-top { /* Post Type: Pros */
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    background: #eeeeee;
+    box-shadow: inset 0 0 50px #afafaf;
+    border: 2px solid #fff;
+    padding: 50px 20px!important;
+}
+
+body.post-type-bookings #acf-group_5b815714dca46 .inside.acf-fields.-top { /* Post Type: Pros */
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    background: #eeeeee;
+    box-shadow: inset 0 0 50px #afafaf;
+    border: 2px solid #fff;
+    padding: 50px 20px!important;
+}
+
+[data-name="booking_customer_full_name"] { grid-column: 1 / 3; }
+[data-name="booking_customer_email_address"] { grid-column: 3 / 5; }
+[data-name="booking_customer_phone_no"] { grid-column: 5 / 7; }
+[data-name="booking_cutomer_address"] { grid-column: 1 / 3; }
+[data-name="booking_cutomer_zipcode"] { grid-column: 5 / 7; }
+
+[data-name="hnd_schedule_handyman"] { grid-column: 1 / 3; }
+[data-name="hnd_schedule_date"] { grid-column: 3 / 5; }
+[data-name="hnd_schedule_arrival_time"] { grid-column: 5 / 7; }
+
+#acf-group_5b815714dca46 { display: none !important; } /* schedule job metabox booking posttype */ 
+
+
+#acf-group_5b4dc554c1b70 { display: none !important; } /* Tools Inventory Option Page */
+
+/*body.post-type-bookings #postbox-container-1 { display: none; }*/
+
+[data-name="pro_dont_show_schedule"] {
+    background: rgb(225 189 164 / 17%);
+    box-shadow: 2px 3px 0px 0px #0000000f;
+    display: flex;
+    padding: 0px !important;
+    padding-top: 12px !important;
+    padding-left: 12px !important;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+[data-name="pro_dont_show_schedule"] .acf-label {
+    margin-right: 10px !important;
+}
+
+[name="hnd_reply_message"] {
+    margin-top: 20px;
+    width: 100%;
+    padding: 20px;
+}
+
+.hnd_review_reply_btn {
+    display: block;
+    background: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.hnd_review_reply_btn:hover {
+    color: white;
+}
+
+.reply-box .reply-loader {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    background: #f0f8ff6e;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.replybox-show {
+    display: flex !important;
+}
+
+.reply-loader img {
+    width: 30px;
+    height: 30px;
+}
+
+
+#TB_ajaxContent {
+    position: relative;
+}
+
+.table {
+  margin: 0 0 40px 0;
+  width: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  display: table;
+  margin-top: 40px;
+}
+
+@media screen and (max-width: 580px) {
+  .table {
+    display: block;
+  }
+}
+
+.row {
+  display: table-row;
+  background: #f6f6f6;
+}
+.row:nth-of-type(odd) {
+  background: #e9e9e9;
+}
+.row.header {
+  font-weight: 900;
+  color: #ffffff;
+  background: #ea6153;
+}
+.row.green {
+  background: #27ae60;
+}
+.row.blue {
+  background: #2980b9;
+}
+
+@media screen and (max-width: 580px) {
+  .row {
+    padding: 14px 0 7px;
+    display: block;
+  }
+  .row.header {
+    padding: 0;
+    height: 6px;
+  }
+  .row.header .cell {
+    display: none;
+  }
+  .row .cell {
+    margin-bottom: 10px;
+  }
+  .row .cell:before {
+    margin-bottom: 3px;
+    content: attr(data-title);
+    min-width: 98px;
+    font-size: 10px;
+    line-height: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #969696;
+    display: block;
+  }
+}
+
+.cell {
+  padding: 6px 12px;
+  display: table-cell;
+}
+
+@media screen and (max-width: 580px) {
+  .cell {
+    padding: 2px 16px;
+    display: block;
+  }
+}

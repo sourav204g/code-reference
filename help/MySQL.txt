@@ -1,0 +1,35 @@
+MySQL Table size Query
+===========================
+
+You can use the following MySQL query to list each table name and its size in a database:
+
+SELECT 
+    table_name AS "Table Name",
+    ROUND((data_length + index_length) / 1024 / 1024, 2) AS "Table Size (MB)"
+FROM information_schema.tables
+WHERE table_schema = 'your_database_name';
+
+Replace 'your_database_name' with the name of your specific database. This query retrieves the table names and calculates the size of each table in megabytes (MB) by adding the data length and index length in the information schema for the specified database.
+
+===========================
+
+The following MySQL command can be used to check the total size of a database:
+
+SELECT ROUND(SUM(DATA_LENGTH + INDEX_LENGTH) / 1024 / 1024, 2) AS `Size (MB)`
+FROM information_schema.TABLES
+WHERE TABLE_SCHEMA = 'database_name';
+
+Replace database_name with the name of the database that you want to check.
+
+===========================
+
+If you want to check the total size of all of your databases, you can use the following command:
+
+
+SELECT ROUND(SUM(DATA_LENGTH + INDEX_LENGTH) / 1024 / 1024, 2) AS `Size (MB)`,
+       TABLE_SCHEMA AS `Database`
+FROM information_schema.TABLES
+GROUP BY TABLE_SCHEMA
+ORDER BY SUM(DATA_LENGTH + INDEX_LENGTH) DESC;
+
+

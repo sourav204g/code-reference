@@ -1,0 +1,292 @@
+		[data-tab="rjobs"] small { font-size: 13px; font-family: Quicksand; }
+		.showreview { width: 100%; }
+		.pro-handy-bio {
+			font-size: 16px;
+			font-family: 'Lato', sans-serif;
+			margin-bottom: 12px;
+			line-height: 23px;
+		}
+		.days8 {
+			width: 48%;
+		}
+		.pro-but1, .pro-but3 {
+			display: block;
+			border-radius: 2px;
+			text-align: center;
+		}
+		/* Cart Section */
+		.forsticky.sticky {
+			position: static !important;
+		}
+		.cart-page h3 {
+			text-transform: uppercase;
+			padding-top: 17px;
+		}
+		.cart-product h3 {
+			font-size: 14px;
+		}
+		/*.input-group-field {
+		   width: 100%; 
+		   height: 55px;
+		}*/
+		.signup22 .input-group-button {
+			display: flex;
+			width: 100%;
+		}
+		button.button11 {
+			font-size: 16px !important;
+			flex: 1;
+		}
+		button.button11:first-child {
+			background-color: #4caf50;
+			padding: 18px 15px;
+		}
+		.bgd8 {
+			background-color: #4CAF50 !important;
+			border-radius: 0px;
+			margin-right: 12px !important;
+		}
+		.bgcc {
+			background: #fff !important;
+			border: none;
+			width: 100% !important
+		}
+		@media only screen and (max-width: 570px) and (min-width: 320px) {
+			.signup22 .input-group-button {
+				display: inherit !important;
+				width: 100% !important;
+			}
+			button.button11:first-child {
+				background-color: #4caf50;
+				padding: 12px 15px !important;
+				width: 100% !important;
+				margin-top: 10px !important;
+			}
+			.cart-head2 {
+				text-align: right;
+				position: absolute;
+				font-size: 15px !important;
+				color: #fff;
+				right: 30px;
+				top: 10px !important;
+			}
+			.cart-page h3 {
+				text-transform: capitalize !important;
+				padding-top: 8px;
+			}
+		}
+		.revise--btn-group {
+			display: flex;
+			flex-direction: column;
+			width: 40%;
+			margin: 0 auto;
+		}
+		.revise--btn-group button {
+			margin-right: 0px !important;
+		}
+		@media screen and (min-width: 1200px) {
+			.revise--btn-group {
+				/* overflow: hidden; */
+				display: flex;
+				flex-direction: row;
+				width: 50%;
+				margin: 0 auto;
+			}
+		}
+		/* Cart Section */
+		#demo-modal {
+			text-align: center;
+			padding: 20px;
+		}
+		#demo-modal-target {
+			background: url(modal_bg.jpg) no-repeat top left fixed;
+			font-family: calibri;
+			max-width: 550px;
+			text-align: center;
+			color: #FFF;
+			padding: 70px 0px;
+		}
+		.demo-title {
+			font-size: 2em;
+			padding: 40px;
+		}
+		.btn-modal-target {
+			padding: 10px 20px;
+			color: #F0F0F0;
+			margin: 5px;
+			border-radius: 15px;
+			cursor: pointer;
+			width: 70px;
+			display: inline-block;
+		}
+		#btn-jquery {
+			background: #e85545;
+		}
+		#btn-bootstrap {
+			background: #43cb83;
+		}
+		#btn-responsive {
+			background: #ff9e8f;
+		}
+		.modal-text {
+			margin-top: 15px;
+			line-height: 25px;
+			font-size: 1.0em;
+			font-family: calibri;
+		}
+		
+		.cst {
+			margin-top: -32px;
+		}
+		.testimonial_group .testimonial {
+			border: 1px solid #cae0e7;
+			background: #fff;
+			border-bottom: 4px solid #cae0e7 !important;
+			padding: 20px !important;
+			width: 100% !important;
+			margin-bottom: 30px;
+			position: relative;
+		}
+		.testimonial_group {
+			overflow: hidden;
+			clear: both;
+			width: 96%;
+			margin: 0 auto;
+		}
+		.hnd-reviews {
+			margin-top: 0px;
+			margin-bottom: 9px;
+			font-size: 28px !important;
+			text-align: center;
+			display: block;
+			width: 100%;
+		}
+		.modal-header {
+			padding: 5px 0px 0px 0px !important;
+			border-bottom: 1px solid #eee !important;
+		}
+		.stars {
+			color: #ffaf00;
+			font-size: 27px;
+		}
+		.rr_review_name {
+			padding-top: 17px;
+			width: 100%;
+			float: right;
+		}
+		.rr_review_name span {
+			font-size: 18px;
+		}
+		
+		/* .pro-handy-bio {
+			font-size: 16px;
+		    font-family: 'Lato', sans-serif;
+		    margin-bottom: 12px;
+		    line-height: 23px;
+		}
+		.days8 {width: 48%;}
+		.pro-but1, .pro-but3 {
+			display: block;
+		    border-radius: 2px;
+		    text-align: center;
+		}
+		.pro-but3 { margin-top: 18px; }
+		.forsticky.sticky { position: static !important; } 
+			.cart-page h3 {
+				text-transform: uppercase;
+	    		padding-top: 17px;
+			}
+			.cart-product h3 { font-size: 14px; }
+			.signup22 .input-group-button { display: flex; width: 100%; }
+			button.button11 {
+			    font-size: 16px !important;
+			    flex: 1;
+			    
+			}
+			button.button11:first-child {
+			    background-color: #4caf50;
+			   
+			    padding: 18px 15px;
+			}
+            .bgd8{
+				background-color: #4CAF50 !important;
+				border-radius: 0px;
+				margin-right: 12px !important;
+             }
+             .bgcc{
+             	background: #fff !important;
+             	border: none;
+             	width: 100% !important
+             }
+			@media only screen and (max-width: 570px) and (min-width: 320px){
+				.signup22 .input-group-button { display: inherit !important; width: 100% !important; }
+			     button.button11:first-child {
+				    background-color: #4caf50;
+				  
+				    padding: 12px 15px !important;
+				    width: 100% !important;
+				    margin-top: 10px !important;
+				}
+				.cart-head2 {
+				    text-align: right;
+				    position: absolute;
+				    font-size: 15px !important;
+				    color: #fff;
+				    right: 30px;
+				    top: 10px !important;
+				}
+				.cart-page h3 {
+				     text-transform: capitalize !important;
+				    padding-top: 16px;
+				}
+			}
+			.revise--btn-group {
+				    display: flex;
+				    flex-direction: column;
+				    width: 40%;
+				    margin: 0 auto;
+			}
+			.revise--btn-group button { margin-right: 0px !important; }	
+			@media screen and (min-width: 1200px) {
+				.revise--btn-group {
+				    display: flex;
+				    flex-direction: row;
+				    width: 50%;
+				    margin: 0 auto;
+				}
+			} */
+
+
+			.hnd-terms {
+			    background: #f0f0f0;
+			    padding: 20px !important;
+			}
+
+			.hnd-terms span {
+			    margin-right: 40px;
+			}
+
+			.hnd-terms a { color: brown; }
+
+			.hnd-terms.hnd-terms-content.container {
+			    border-top: 1px solid #ddd;
+			}
+
+			.hnd-terms.hnd-terms-content.container > p { margin-bottom: 0px !important; }
+
+			.hnd-terms.hnd-terms-content.container > strong {
+			    display: block;
+			    margin-bottom: 10px;
+			}
+
+
+			.termsval { display: none; }
+			
+			@media print{
+				.print-hide { display: none !important; }
+				.termsval { display: block !important; page-break-inside: avoid; }
+				 #filter { display: block !important; }
+			}
+
+			tbody ul li { list-style: disc; }
+			tbody ul { padding-left: 40px; }

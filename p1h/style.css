@@ -1,0 +1,932 @@
+/*!
+Theme Name: handyman pro
+Theme URI: http://underscores.me/
+Author: SEOFIED
+Author URI: https://www.seofied.com/
+Description: Description
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: handyman_pro
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+handyman pro is based on Underscores https://underscores.me/, (C) 2012-2017 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Typography
+# Elements
+# Forms
+# Navigation
+	## Links
+	## Menus
+# Accessibility
+# Alignments
+# Clearings
+# Widgets
+# Content
+	## Posts and pages
+	## Comments
+# Infinite scroll
+# Media
+	## Captions
+	## Galleries
+--------------------------------------------------------------*/
+
+/* custom imp */
+.hnd-tr-hide { display: none !important; }
+/* / custom imp */
+
+/* Small menu. */
+.menu-toggle,
+.main-navigation.toggled ul {
+	display: block;
+}
+
+@media screen and (min-width: 37.5em) {
+	.menu-toggle {
+		display: none;
+	}
+	.main-navigation ul {
+		display: block;
+	}
+}
+
+.site-main .comment-navigation, .site-main
+.posts-navigation, .site-main
+.post-navigation {
+	margin: 0 0 1.5em;
+	overflow: hidden;
+}
+
+.comment-navigation .nav-previous,
+.posts-navigation .nav-previous,
+.post-navigation .nav-previous {
+	float: left;
+	width: 50%;
+}
+
+.comment-navigation .nav-next,
+.posts-navigation .nav-next,
+.post-navigation .nav-next {
+	float: right;
+	text-align: right;
+	width: 50%;
+}
+
+/*--------------------------------------------------------------
+# Accessibility
+--------------------------------------------------------------*/
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+}
+
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto !important;
+	clip-path: none;
+	color: #21759b;
+	display: block;
+	font-size: 14px;
+	font-size: 0.875rem;
+	font-weight: bold;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000;
+	/* Above WP toolbar. */
+}
+
+/* Do not show the outline on the skip link target. */
+#content[tabindex="-1"]:focus {
+	outline: 0;
+}
+
+/*--------------------------------------------------------------
+# Alignments
+--------------------------------------------------------------*/
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 1.5em;
+}
+
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 1.5em;
+}
+
+.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/*--------------------------------------------------------------
+# Clearings
+--------------------------------------------------------------*/
+.clear:before,
+.clear:after,
+.entry-content:before,
+.entry-content:after,
+.comment-content:before,
+.comment-content:after,
+.site-header:before,
+.site-header:after,
+.site-content:before,
+.site-content:after,
+.site-footer:before,
+.site-footer:after {
+	content: "";
+	display: table;
+	table-layout: fixed;
+}
+
+.clear:after,
+.entry-content:after,
+.comment-content:after,
+.site-header:after,
+.site-content:after,
+.site-footer:after {
+	clear: both;
+}
+
+/*--------------------------------------------------------------
+# Widgets
+--------------------------------------------------------------*/
+.widget {
+	margin: 0 0 1.5em;
+	/* Make sure select elements fit in widgets. */
+}
+
+.widget select {
+	max-width: 100%;
+}
+
+/*--------------------------------------------------------------
+# Content
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+## Posts and pages
+--------------------------------------------------------------*/
+.sticky {
+	display: block;
+}
+
+.hentry {
+	margin: 0 0 1.5em;
+}
+
+.updated:not(.published) {
+	display: none;
+}
+
+.page-content,
+.entry-content,
+.entry-summary {
+	margin: 1.5em 0 0;
+}
+
+.page-links {
+	clear: both;
+	margin: 0 0 1.5em;
+}
+
+/*--------------------------------------------------------------
+## Comments
+--------------------------------------------------------------*/
+.comment-content a {
+	word-wrap: break-word;
+}
+
+.bypostauthor {
+	display: block;
+}
+
+/*--------------------------------------------------------------
+# Infinite scroll
+--------------------------------------------------------------*/
+/* Globally hidden elements when Infinite Scroll is supported and in use. */
+.infinite-scroll .posts-navigation,
+.infinite-scroll.neverending .site-footer {
+	/* Theme Footer (when set to scrolling) */
+	display: none;
+}
+
+/* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before. */
+.infinity-end.neverending .site-footer {
+	display: block;
+}
+
+/*--------------------------------------------------------------
+# Media
+--------------------------------------------------------------*/
+.page-content .wp-smiley,
+.entry-content .wp-smiley,
+.comment-content .wp-smiley {
+	border: none;
+	margin-bottom: 0;
+	margin-top: 0;
+	padding: 0;
+}
+
+/* Make sure embeds and iframes fit their containers. */
+embed,
+iframe,
+object {
+	max-width: 100%;
+}
+
+/* Make sure logo link wraps around logo image. */
+.custom-logo-link {
+	display: inline-block;
+}
+
+/*--------------------------------------------------------------
+## Captions
+--------------------------------------------------------------*/
+.wp-caption {
+	margin-bottom: 1.5em;
+	max-width: 100%;
+}
+
+.wp-caption img[class*="wp-image-"] {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.wp-caption .wp-caption-text {
+	margin: 0.8075em 0;
+}
+
+.wp-caption-text {
+	text-align: center;
+}
+
+/*--------------------------------------------------------------
+## Galleries
+--------------------------------------------------------------*/
+.gallery {
+	margin-bottom: 1.5em;
+}
+
+.gallery-item {
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+	width: 100%;
+}
+
+.gallery-columns-2 .gallery-item {
+	max-width: 50%;
+}
+
+.gallery-columns-3 .gallery-item {
+	max-width: 33.33%;
+}
+
+.gallery-columns-4 .gallery-item {
+	max-width: 25%;
+}
+
+.gallery-columns-5 .gallery-item {
+	max-width: 20%;
+}
+
+.gallery-columns-6 .gallery-item {
+	max-width: 16.66%;
+}
+
+.gallery-columns-7 .gallery-item {
+	max-width: 14.28%;
+}
+
+.gallery-columns-8 .gallery-item {
+	max-width: 12.5%;
+}
+
+.gallery-columns-9 .gallery-item {
+	max-width: 11.11%;
+}
+
+.gallery-caption {
+	display: block;
+}
+
+/* Custom */
+p.error {
+    color: #F44336;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+@media screen and (max-width: 1200px) {
+	.forsticky { display: none; }
+}
+
+
+
+/* For Firefox */
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+/* Webkit browsers like Safari and Chrome */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+
+
+
+/* 23-NOV-2018 Remove these styles - */ 
+
+/* #toggle-widget h2 {
+	    background-image: linear-gradient(to bottom right, #503843, #532819);
+}
+
+.menu-sec {
+	background-image: linear-gradient(to bottom right, #ffffff, #1b2055);
+	border-bottom: 2px solid #000;
+}
+
+.menu-sec nav>ul>li>a {
+    float: left;
+    font-family: 'Lato', sans-serif;
+    font-size: 17px;
+    color: #ffffff;
+    position: relative;
+    padding: 8px 10px;
+}
+
+.page-template-page-services .col-lg-3.col-md-3.col-sm-3.col-md-pull-9 {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    box-shadow: inset 0px 0px 6px 0px #51547d;
+    background: #c0c1d0;
+}
+
+.page-template-page-services .emply-list-sec {
+    float: left;
+    width: 100%;
+    padding: 50px;
+    box-shadow: inset 0px 0px 6px 0px #51547d;
+    background: #c0c1d0;
+}
+
+.inner-title2>span {
+    float: left;
+    width: 100%;
+    font-size: 14px;
+    color: #000000;
+    margin-top: 7px;
+}
+
+.breadcrumbs>li a {
+    float: left;
+    width: 100%;
+    font-size: 14px;
+    color: #000000;
+}
+
+
+.filterbar>p {
+    float: left;
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    color: #000;
+    line-height: 36px;
+}
+
+.head78 {
+    background: #8f9c86;
+    padding: 15px;
+    font-size: 24px;
+    color: #ffffff;
+    box-shadow: 0px 4px 0px 0px #ddd;
+}
+
+.job-details p, .job-details li {
+    float: left;
+    width: 100%;
+    font-size: 16px;
+    color: #000;
+    line-height: 22px;
+    margin: 0;
+    margin-bottom: 19px;
+}
+
+body {
+    color: #000;
+    letter-spacing: 0;
+    font-family: 'Lato', sans-serif;
+    overflow-x: hidden;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+}
+
+.quick-form-job form {
+    float: left;
+    width: 100%;
+    border: 2px solid #424542;
+    border-radius: 4px;
+    padding: 30px 20px;
+}
+
+.quick-form-job form input, .quick-form-job form textarea {
+    float: left;
+    width: 100%;
+    background: none;
+    border: 2px solid #03a9f49e;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #000;
+    padding: 15px 25px;
+    font-family: 'Lato', sans-serif;
+    margin-bottom: 15px;
+}
+
+.quick-form-job>h3 {
+    float: left;
+    width: 100%;
+    font-size: 16px;
+    color: #000000;
+    font-family: inherit;
+    text-transform: uppercase;
+    font-size: 18px !important;
+    font-weight: bold;
+    box-shadow: none;
+}
+
+.add-to-cart {
+    float: left;
+    font-size: 15px;
+    background: #f2ae00;
+    border: 1px solid #f2ae00;
+    color: #ffffff !important;
+    padding: 8px 48px !important;
+    line-height: 20px;
+    margin: 10px 0;
+    margin-left: 0;
+    margin-top: 20px;
+    width: auto !important;
+    cursor: pointer;
+    margin: 0 !important;
+}
+
+.add-to-cart .fa {
+    margin-right: 5px;
+    font-size: 24px;
+        position: relative;
+    top: 2px;
+}
+
+.account-popup-area {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(9, 9, 8, 0.98);
+    opacity: 1;
+    z-index: 99;
+    overflow-Y: scroll;
+    display: none;
+} */
+
+/* / Remove these styles - */ 
+
+.exp-listing {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.exp-listing article { order: 4; }
+.exp-listing article:nth-child(1) { order: 1; }
+.exp-listing article:nth-child(2) { order: 2; }
+.exp-listing article.hnd-proudctx { order: 3 !important; }
+
+/* 10-Aug-2019 */
+
+.cartlogoprint {
+	display: none;
+}
+
+.printvisibility {
+   float: right;
+    padding: 0px;
+    margin: 0px;
+    top: 9px;
+    position: absolute;
+    right: 106px;
+    font-size: 35px !important;
+}
+
+.form-control-range a {
+	font-size: 14px;
+	background: #FF6E00;
+	color: #fff;
+	padding: 10px;
+}
+
+.cartheadinglogo {
+	width: 100%;
+	text-align: center;
+	display: none;
+}
+
+@media print {
+	@page {
+		margin: 0;
+	}
+	body {
+		margin: 1.6cm;
+	}
+	section .block.no-padding, footer, section .block .no-padding .gray, .overlape, .cart-page, .simple-text22, #mobileseach, .stick-top .forsticky, .responsive-header, .menu-sec, .item-remove, .table tbody tr td:last-child, .table thead tr th:last-child, .printvisibility {
+		display: none;
+	}
+	.cartheadinglogo {
+		display: block;
+	}
+}
+
+#menu-header-menu .current-menu-item {
+    font-weight: bold;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+}
+
+.hnd-top0ca .emply-list { background: rgba(33, 150, 243, 0.2) !important; }
+
+.mobile-sidebar .sortby-sec {
+    float: left !important;
+    width: 100%;
+    display: block;
+}
+
+.findit .sortby-sec {
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 769px) {
+	a.style2.noradius.blackbg { 
+		width: 80%;
+		margin-left: -10%;
+	}
+
+
+	.hnd-terms.container.print-hide {
+	    display: flex;
+	    flex-direction: column;
+	    padding: 30px !important;
+	}
+}
+.catheading {
+    color: #d0a22f !important;
+    text-decoration: none !important;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.customer-popup-sec { display: flex;     justify-content: space-between; }
+
+.customer-popup-sec p {
+    margin: 0;
+    padding: 1px 1px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.customer-popup-sec p span {
+    color: #4caf50;
+    padding-left: 5px;
+    letter-spacing: -0.5px;
+    cursor: pointer;
+}
+
+a.style2.noradius.blackbg { 
+	position: relative; 
+}
+
+		a.style2.noradius.blackbg::after {
+			content: "\f128";
+			font-family: 'FontAwesome';
+			position: absolute;
+			right: -40px;
+			color: white;
+			background: rgba(222, 3, 4, 0.8); /* #c11717 */
+			height: 100%;
+			top: 0;
+			padding: 0 15px;
+			font-size: 26px;
+			display: flex;
+			align-items: center;
+			border-radius: 0 4px 4px 0;
+		}
+
+a.style2.noradius.blackbg.removeq::after {
+	all: unset;
+}
+
+#blk-btn-popup .modal-footer button {
+    font-size: 18px!important;
+    border-radius: 3px;
+    padding: 10px 20px;
+    background: white;
+    color: #0072ff;
+    border: solid 1px #b8bec5!important;
+    box-shadow: 0px 4px 7px -1px rgb(40 55 74 / 33%);
+}
+
+#blk-btn-popup .modal-footer button:first-child {
+    background: #0072ff;
+    color: #fff;
+    border: solid 1px #0072ff!important;
+    padding: 7px 20px !important;
+}
+
+#blk-btn-popup .modal-footer button:focus {
+    outline: none;
+}
+
+li.sortby-sec.cust_but.customize {
+    width: 97% !important;
+    padding: 0px !important;
+}
+
+.menu-item-4555 a span { color: red; font-weight: bold; }
+
+.hnd-note-general {
+        text-align: center;
+          display: block;
+          font-size: 14px;
+          letter-spacing: 0.1pt;
+          font-weight: bold;
+          position: relative;
+          top: 10px;
+    }
+
+.calender-pop-bx .datepicker table tr td.day.disabled:hover {
+    background: none !important;
+    color: #6c839a !important;
+}
+
+#menu-mobile-menu .menu-item-4554 a > span {
+    color: red;
+    font-weight: bold;
+}
+
+.social-share-sec {
+    display: flex;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+.social-share-sec h6 {
+    margin: 0 1rem 0 0;
+    font-weight: 700;
+    color: red;
+    font-size: 20px;
+}
+.social-share-sec img {
+    width: 24px;
+    margin: 0 12px 0 0;
+}
+
+@media screen and (max-width: 415px ) {
+    div.rqq > a.btn.btn-danger {
+        position: relative;
+        left: -35px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 576px ) {
+    .home-exp-sec.pop article .exp-tech-hover {
+    	opacity: 1 !important;
+    }
+    .for-mob { display: none !important; }
+
+    .home-exp-sec.pop article {
+    	min-height: unset;
+    	padding: 0px;
+    	height: 60px;
+    	position: relative;
+    	transition: 0.3s ease;
+    }
+
+    .home-exp-sec.pop article::after {
+    	position: absolute;
+	    content: '\f178';
+	    right: 18px;
+	    top: 22px;
+	    color: #ffffff3b;
+	    font-family: "FontAwesome";
+    }
+
+    .home-exp-sec.pop article.active::after{
+    	transform: rotate(90deg);
+    }
+
+    .home-exp-sec.pop .exp-inner-brd {
+    	border: none;
+    }
+}
+
+
+@media screen and (max-width: 576px ) {
+    
+  /* Toggle Widget */
+	.exp-inner-main.mobile-v1 {
+		float: left;
+		width: 100%;
+		background: #f6f6f6;
+		padding:0px !important;
+	}
+
+	.exp-inner-brd.mobile-v1 {
+	padding:0px !important;
+	width: 100%;
+	left:0px!important;
+	margin: 0px!important;
+	}
+
+	.exp-inner-main.mobile-v1 h4 {
+		float: left;
+		width: 100%;
+		font-size: 18px;
+		color: #fff;
+		background: #424242;
+		padding: 11px 40px 11px 20px;
+		font-family: 'Lato', sans-serif;
+		cursor: pointer;
+		margin-bottom: 0px;
+		position: relative;
+	}
+
+	.handypro-box {
+	    margin-bottom: 8px !important;
+	}
+
+	.exp-inner-main.mobile-v1 ul{
+	margin-top: 70px;
+	margin-left:25px;
+	}
+
+
+	.exp-inner-main.mobile-v1 ul li {
+	    margin: 8px 0 14px 0px;
+	}
+
+	.exp-inner-main.mobile-v1 .hnd-special{
+	    margin-left: 25px;
+	    margin-bottom: 20px;
+	    margin-top: 12px;
+	    margin-right: 25px;
+	}
+	.exp-inner-main.mobile-v1 ul li a{
+		color: #323232;
+	    padding-top: 5px;
+	    padding-left:0px;
+	    font-size: 14px;
+	    margin-bottom: 4px;
+	    text-transform: capitalize;
+	}
+
+	.exp-inner-main.mobile-v1 ul li a span{
+		color: #7F9BA7;
+	    font-size: 17px;
+	    text-transform: capitalize;
+	}
+	.home-exp-sec.pop article {
+	    min-height: unset;
+	    padding: 0px;
+	    height: 48px;
+	    position: relative;
+	    transition: 0.3s ease;
+	}
+
+	.home-exp-sec.pop article::after {
+	    position: absolute;
+	    content: "\f121";
+	    right: 18px;
+	    top: 15px;
+	    color: #fff;
+	        font-family: lineawesome;
+	}
+
+	.exp-inner-main.mobile-v1 a.learn-more {
+	    height:unset;
+	    color: #1e1e1e;
+	    font-size: 15px;
+	    text-transform: uppercase;
+	    text-align: center;
+	    margin-top: 9px;
+	    margin-left: 25px;
+	    font-weight: 600;
+	    border: none;
+	    padding-left: 0px;
+	}
+
+	.hnd-special a span{
+	    font-size: 12px;
+	    font-weight: 400;
+	}
+
+	.hnd-special {
+	    line-height: 18px;
+	    transition: 0.3s ease;
+	    font-size: 14px;
+	}
+
+
+	.exp-inner-main.mobile-v1  .content {
+		float: left;
+		width: 100%;
+		padding: 0 16px;
+		background: #f6f6f6;
+		margin-bottom: 10px;
+	}
+	.exp-inner-main.mobile-v1 t .content p {
+		float: left;
+		width: 100%;
+		color: #888888;
+		font-size: 14px;
+		line-height: 24px;
+		margin: 0;
+		padding: 25px 0;
+	}
+	.exp-inner-main.mobile-v1  h2::before {
+		position: absolute;
+		font-family: lineawesome;
+		content: "\f121";
+		font-size: 20px;
+		color: #fff;
+		top: 50%;
+		right: 20px;
+		margin-top: -12px;
+	}
+	.exp-inner-main.mobile-v1 h2.active::before {
+		-webkit-transform: rotate(90deg);
+		-moz-transform: rotate(90deg);
+		-ms-transform: rotate(90deg);
+		-o-transform: rotate(90deg);
+		transform: rotate(90deg);
+	}  
+}
+
+.old-reviews i {
+	color: #ffaf00 !important;
+}
+
+.negative-reviews-wrapper {
+	display: none;
+}
+
+.hnd-preview {
+	position: relative;
+}
+
+.hnd-preview:after {
+	position: absolute;
+	content: url('./assets/images/hnd-paid.png');
+	left: 240px;
+    bottom: -60px;
+}

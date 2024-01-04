@@ -1,0 +1,94 @@
+https://shopify.github.io/liquid/
+https://shopify.github.io/liquid/filters/append/
+
+https://shopify.dev/themes/tools/theme-kit/getting-started
+https://shopify.dev/themes/tools/theme-kit/command-reference
+https://shopify.dev/themes/tools/theme-kit/configuration-reference
+
+
+http://cheat.markdunkley.com/
+
+
+Print_r equivalent in Liquid
+{{item | json}}
+
+==============================================================
+// Shopify if NOT homepage
+// REF - https://stackoverflow.com/questions/50922684/shopify-if-not-homepage
+
+{% if template.name != "index" %} 
+ do something
+{% endif %}
+
+
+https://www.shopify.in/partners/shopify-cheat-sheet
+https://shopify.dev/themes
+https://shopify.dev/api/liquid
+
+https://shopify.dev/themes/architecture/sections/section-schema
+https://shopify.dev/themes/architecture/settings/input-settings
+https://shopify.dev/themes/architecture/settings/input-settings#text
+
+Pagination
+https://shopify.github.io/liquid-code-examples/example/simple-pagination
+
+
+https://shopify.dev/api/liquid/objects
+https://shopify.dev/api/liquid/objects/shop
+
+https://shopify.dev/api/liquid/objects/collection
+
+https://shopify.dev/themes/architecture/sections
+
+https://shopify.dev/themes/architecture/settings
+https://shopify.dev/themes/architecture/settings/input-settings
+
+https://shopify.dev/api/liquid/filters
+https://shopify.dev/api/liquid/filters/url-filters
+
+https://shopify.dev/api/liquid/tags/variable-tags
+
+
+
+https://community.shopify.com/c/Technical-Q-A/Looping-through-products-from-a-particular-collection/td-p/587799
+
+<ul>
+	{% for product in collections.all.products limit: 8 %}
+	<li>
+	<img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /> 
+	<a class="shop-now" href="{{ product.url }}">{{ product.title | escape }} 
+	</a> 
+	</li>
+	{% endfor %}
+</ul>
+
+
+The default way to target a specific collection is collections.COLLECTION_HANDLE or collections[COLLECTION_HANDLE]
+
+So if you have a collection called Shirts it will probably have a handle called shirts ( it may be different, you need to check it ) then you call collections['shirts'] and since you want the products you target them like so collections['shirts'].products 
+
+
+<ul>
+	{% for product in collections['shirts'].products limit: 8 %}
+	<li>
+	<img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /> 
+	<a class="shop-now" href="{{ product.url }}">{{ product.title | escape }} 
+	</a> 
+	</li>
+	{% endfor %}
+</ul>
+
+
+
+JSON Validator
+https://jsonlint.com/
+
+
+https://shopify.github.io/slate/docs/about
+
+
+==========
+Limitations
+https://stackoverflow.com/questions/50136352/add-dynamic-content-in-schema-section-for-shopify-theme
+https://stackoverflow.com/questions/49990375/use-liquid-object-in-json-scheme-shopify
+https://stackoverflow.com/questions/51385783/shopify-can-i-use-a-reusable-variable-list-in-settings-schema-json
